@@ -1,6 +1,9 @@
 This is a project created with 
 HTML, CSS, JS and
-Django - Python Framework for Backend
+
+Django - Python Framework for Backend and 
+
+deployed on Python Anywhere
 
 https://djangoairportwebsite.pythonanywhere.com/ 
 
