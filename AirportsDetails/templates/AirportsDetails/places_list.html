@@ -1,0 +1,59 @@
+{% extends 'base_layout.html' %}
+
+{% block title %}
+  <title>Places to Visit </title>
+  <!-- Schema Markup for the Airline -->
+  <meta name="description" content="Places to Visit " />
+  <meta name="keyword" content="Places to Visit " />
+
+  <meta property="og:title" content="Places to Visit " />
+  <meta property="og:description" content="Places to Visit " />
+  <meta property="og:type" content="website" />
+
+  <meta name="robots" content="index, follow" />
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "itemListElement": [
+        {% for card in places  %}
+        {
+          "@type": "ListItem",
+          "position": {{ forloop.counter }},
+          "name": "{{ card.title }}",
+          "url": "{{ request.build_absolute_uri }}{{ card.slug }}"
+        }
+        {% if not forloop.last %},{% endif %}
+        {% endfor %}
+      ]
+    }
+    </script>
+  
+{% endblock %}
+
+{% block content %}
+
+
+
+<div class="col-12 col-md-8 mb-5 mb-lg-0">
+  <h2 class="headline headline-2 section-title"><span class="span">All Places To visit</span></h2>
+
+  <p class="section-text">Featured and highly rated articles</p>
+
+  <ul class="feature-list">
+    {% for card in places %}
+      <li>
+        {% include 'components/card_sm.html' with card=card %}
+      </li>
+    {% endfor %}
+  </ul>
+
+
+    <!-- Pagination controls if paginate_by is used -->
+    {% include 'components/pagination.html' %}  
+  </div>
+
+{% endblock %}

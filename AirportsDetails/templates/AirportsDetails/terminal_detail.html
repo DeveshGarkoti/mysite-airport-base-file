@@ -1,0 +1,98 @@
+{% extends 'base_layout.html' %}
+
+{% block title %}
+  <title>{{ terminal.meta_title }}</title>
+  <!-- Schema Markup for the terminal -->
+  <meta name="description" content="{{ terminal.meta_description }}" />
+  <meta name="keyword" content="{{ terminal.meta_keywords }}" />
+
+  <meta property="og:title" content="{{ terminal.meta_title }}" />
+  <meta property="og:description" content="{{ terminal.meta_description|truncatewords:60|safe }}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="{{ terminal.get_absolute_url }}" />
+  <meta property="og:updated_time" content="{{ terminal.update_date }}" />
+
+  <meta name="robots" content="index, follow" />
+
+  {% include 'components/schema_card.html' with card=terminal %}
+{% endblock %}
+
+{% block content %}
+  <div class="col-12 col-md-8 mb-5 mb-lg-0">
+
+    <article itemscope itemtype="https://schema.org/BlogPosting">
+      {% include 'components/post_card.html' with card=terminal %}
+
+      <h4>Terminal Number: {{ terminal.terminal_number }}</h4>
+
+      <!-- card Content Section -->
+      <section id="content" class="card-content" itemprop="description">
+        <!-- -Post Details -->
+        <!-- Airport and Airline Information -->
+        <p>
+          <strong>Airport:</strong> <a href="{{ terminal.airport.get_absolute_url }}">{{ terminal.airport.title }}</a>
+        </p>
+        <p>
+          <strong>Airline:</strong> <a href="{{ terminal.airline.get_absolute_url }}">{{ terminal.airline.title }}</a>
+        </p>
+        <p>{{ terminal.content|safe }}</p>
+
+        {% include 'components/post_details_card.html' with card=terminal.airport layout=terminal.layout %}
+
+        {% include 'components/post_also_known_as.html' with card=terminal.airport cards=alias_airports layout=terminal.layout title='Also known as' %}
+
+        {% include 'components/post_details_card.html' with card=terminal.airline layout=terminal.layout %}
+
+
+        {% include 'components/post_services.html' with card=terminal.airline layout=terminal.layout title='airline' %}
+
+        {% include 'components/post_facilities.html' with card=terminal.airport layout=terminal.layout title='airport' %}
+
+        {% include 'components/post_aircrafts.html' with card=terminal.airline layout=terminal.layout cards=aircrafts_airlines title='Aircraft' %}
+
+
+        {% include 'components/post_country_details_card.html' with card=terminal.airport %}
+
+        {% include 'components/post_country_places.html' with card=terminal.airport places=places_to_visit_in_country %}
+
+        {% include 'components/post_country_details_card.html' with card=terminal.airline %}
+
+        {% include 'components/post_map_card.html' with card=terminal  %}
+
+        <!-- FAQs -->
+
+        <section>
+          <br>
+        <h2 class="headline headline-3">Faqs</h2>
+<br>
+          {% include 'components/post_faq_card.html' with card=terminal title='airport' %}
+
+          {% include 'components/post_faq_card.html' with card=terminal.airport title='airport' %}
+
+          {% include 'components/post_faq_card.html' with card=terminal.airline title='airlines' %}
+
+          {% include 'components/post_faq_card.html' with card=terminal.airport.country title='country' %}
+        </section>
+
+        <div class="airline">
+          <!-- Terminals -->
+          {% include 'components/post_terminals.html' with category='terminals' all_url='terminals_by_airline_list' slug=terminal.airline.slug card=terminal.airline cards=terminals_in_airline %}
+
+          <!-- Offices -->
+          {% include 'components/post_terminals.html' with category='Offices' all_url='offices_by_airline_list' slug=terminal.airline.slug card=terminal.airline cards=offices_in_airline %}
+        </div>
+
+        <div class="airport">
+          <!-- Terminals -->
+          {% include 'components/post_terminals.html' with category='terminals' all_url='terminals_by_airport_list' slug=terminal.airport.slug card=terminal.airport cards=terminals_in_airport %}
+
+          <!-- Offices -->
+          {% include 'components/post_terminals.html' with category='Offices' all_url='offices_by_airport_list' slug=terminal.airport.slug card=terminal.airport cards=offices_in_airport %}
+        </div>
+      
+      </section>
+      {% include "components/comments.html" with post_id=terminal.id %}
+
+    </article>
+  </div>
+{% endblock %}

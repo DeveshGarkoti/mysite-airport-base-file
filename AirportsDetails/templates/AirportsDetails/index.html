@@ -1,0 +1,319 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <!--   
+        - #HERO
+        -->
+
+  <section class="hero" id="home" aria-label="home">
+    <div class="container">
+      <div class="hero-content">
+        <p class="hero-subtitle">Hello Everyone!</p>
+
+        <h1 class="headline headline-2 section-title">This is <span class="span">Airport Airlines</span></h1>
+
+        <p class="hero-text">I use animation as a third dimension by which to simplify experiences and kuiding thro each and every interaction. I’m not adding motion just to spruce things up, but doing it in ways that.</p>
+
+        
+
+          <form action="{% url 'search' %}" method="get" class="card-wrapper">
+            <div class="input-wrapper">
+            <input class="input-field  " id="search-query" name="q" value="{{ request.GET.q }}" type="search" placeholder="Type &amp; Hit Enter..." />
+            <button type="submit" class="btn btn-primary btn-block m">Search<ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon></button>
+        </div>
+      </form>
+        
+      </div>
+
+      <div class="hero-banner">
+        <img src="{% static './assets/images/aeroplanes.png' %}" width="327" height="490" alt="Wren Clark" class="w-100" />
+
+        <img src="{% static './assets/images/pattern-2.svg' %}" width="27" height="26" alt="shape" class="shape shape-1" />
+
+        <img src="{% static './assets/images/pattern-3.svg' %}" width="27" height="26" alt="shape" class="shape shape-2" />
+        <img src="{% static './assets/images/pattern-3.svg' %}" width="27" height="26" alt="shape" class="shape shape-3" />
+      </div>
+
+      <img src="{% static './assets/images/shadow-1.svg' %}" width="500" height="800" alt="" class="hero-bg hero-bg-1" />
+
+      <img src="{% static './assets/images/shadow-2.svg' %}" width="500" height="500" alt="" class="hero-bg hero-bg-2" />
+    </div>
+  </section>
+
+  <br />
+  <!--   
+        - #Airlines
+        -->
+  <section class="topics" id="topics" aria-labelledby="topic-label">
+    <div class="container">
+      <div class="card topic-card">
+        <div class="card-content">
+          <h2 class="headline headline-2 section-title card-title" id="topic-label"><a href="{% url 'airline_list' %}">Airlines</a></h2>
+
+          <p class="card-text">Don't miss out on the latest news about Travel tips, Hotels review, Food guide...</p>
+
+          <div class="btn-group">
+            <button class="btn-icon" aria-label="previous" data-slider-prev><ion-icon name="arrow-back" aria-hidden="true"></ion-icon></button>
+
+            <button class="btn-icon" aria-label="next" data-slider-next><ion-icon name="arrow-forward" aria-hidden="true"></ion-icon></button>
+          </div>
+        </div>
+
+        <div class="slider" data-slider>
+          <ul class="slider-list" data-slider-container>
+            {% for card in airlines|slice:':10' %}
+              <li class="slider-item">
+                <a href="{{ card.get_absolute_url }}" class="slider-card">
+                  {% if card.photo %}
+                    
+                    <figure class="slider-banner img-holder" style="--width: 507; --height: 618;">
+                      <img src="{{ card.photo.url }}" width="507" height="618" loading="lazy" alt="{{ card.photo_alt }}" class="img-cover" />
+                    </figure>
+                  {% else %}
+                  <figure class="slider-banner img-holder" style="--width: 200; --height: 200;">
+                    <img src="{% static './assets/images/featured-2.png' %}" loading="lazy" width="200" height="200" loading="lazy" alt="{{ card.photo_alt }}" class="img-cover" />
+                  </figure>
+                  {% endif %}
+
+                  <div class="slider-content">
+                    <span class="slider-title">{{ card.title }}</span>
+
+                    <p class="slider-subtitle">38 Airport</p>
+                  </div>
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <br />
+  <br />
+  <br />
+  <!--   
+        - #POPULAR  Airlines
+        -->
+
+  <section class="tags" aria-labelledby="tag-label">
+    <div class="container">
+      <h2 class="headline headline-2 section-title" id="tag-label"><span class="span">Popular Airlines</span></h2>
+
+      <p class="section-text">Most searched Airlines</p>
+
+      <ul class="grid-list">
+        {% for card in airlines|slice:':20' %}
+          <li>
+            <button class="card tag-btn">
+              <img src="{{ card.photo.url }}" class="rounded" width="32" height="32" loading="lazy" alt="{{ card.title }}" />
+              <p class="btn-text">{{ card.title }}</p>
+            </button>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
+
+  <!--   
+        - #RECENT POST
+        -->
+
+  <section class="section recent-post" id="recent" aria-labelledby="recent-label">
+    <div class="container">
+      <div class="post-main">
+        <div class="">
+          <h2 class="headline headline-2 section-title"><a href="{% url 'post_list' %}"><span class="span">Recent posts</span></a></h2>
+
+          <p class="section-text">Don't miss the latest trends</p>
+
+          <ul class="grid-list">
+            {% for card in sidebar_posts %}
+              <li>
+                {% include "components/left_card.html" with card=card %}
+
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+
+      {% include 'components/sidebar/sidebar.html' %}
+    </div>
+  </section>
+
+  <!--  
+        - #FEATURED POST
+       -->
+
+  <section class="section feature" aria-label="feature" id="featured">
+    <div class="container">
+      <h2 class="headline headline-2 section-title"><span class="span">Editor's picked</span></h2>
+
+      <p class="section-text">Featured and highly rated articles</p>
+
+      <ul class="feature-list">
+        {% for card in sidebar_posts %}
+          {% include 'components/post_card_sm.html' with card=card %}
+        {% endfor %}
+      </ul>
+
+      <a href="{% url 'post_list' %}" class="btn btn-secondary">
+        <span class="span">Show More Posts</span>
+
+        <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+      </a>
+    </div>
+
+    <img src="{% static './assets/images/shadow-3.svg' %}" width="500" height="1500" loading="lazy" alt="" class="feature-bg" />
+  </section>
+
+  <!--  
+        - #Recent Airport
+       -->
+
+  <section class="section feature" aria-label="feature" id="featured">
+    <div class="container">
+      <h2 class="headline headline-2 section-title"><a href="{% url 'airport_list' %}"><span class="span">All Airports</span></a></h2>
+
+      <p class="section-text">Featured and highly rated articles</p>
+
+      <ul class="feature-list">
+        {% for card in airports %}
+          <li>
+            {% include 'components/card_sm.html' with card=card %}
+          </li>
+        {% endfor %}
+      </ul>
+
+      <a href="{% url 'airport_list' %}" class="btn btn-secondary">
+        <span class="span">Show More Posts</span>
+
+        <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+      </a>
+    </div>
+
+    <img src="{% static './assets/images/shadow-3.svg' %}" width="500" height="1500" loading="lazy" alt="" class="feature-bg" />
+  </section>
+
+  <!--  
+        - #Recent terminals
+       -->
+
+       <section class="section feature" aria-label="feature" id="featured">
+        <div class="container">
+          <h2 class="headline headline-2 section-title"><a href="{% url 'terminal_list' %}"><span class="span">All Terminals</span></a></h2>
+    
+          <p class="section-text">Featured and highly rated articles</p>
+    
+          <ul class="feature-list">
+            {% for card in terminals %}
+              <li>
+                {% include 'components/card_sm.html' with card=card %}
+              </li>
+            {% endfor %}
+          </ul>
+    
+          <a href="{% url 'terminal_list' %}" class="btn btn-secondary">
+            <span class="span">Show More Posts</span>
+    
+            <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+          </a>
+        </div>
+    
+        <img src="{% static './assets/images/shadow-3.svg' %}" width="500" height="1500" loading="lazy" alt="" class="feature-bg" />
+      </section>
+    
+
+  <!--  
+        - #Recent offices
+       -->
+
+       <section class="section feature" aria-label="feature" id="featured">
+        <div class="container">
+          <h2 class="headline headline-2 section-title"><a href="{% url 'office_list' %}"><span class="span">All Offices</span></a></h2>
+    
+          <p class="section-text">Featured and highly rated articles</p>
+    
+          <ul class="feature-list">
+            {% for card in offices %}
+              <li>
+                {% include 'components/card_sm.html' with card=card %}
+              </li>
+            {% endfor %}
+          </ul>
+    
+          <a href="{% url 'office_list' %}" class="btn btn-secondary">
+            <span class="span">Show More Posts</span>
+    
+            <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+          </a>
+        </div>
+    
+        <img src="{% static './assets/images/shadow-3.svg' %}" width="500" height="1500" loading="lazy" alt="" class="feature-bg" />
+      </section>
+
+      
+
+  <!--  
+        - #Recent Country
+       -->
+
+       <section class="section feature" aria-label="feature" id="featured">
+        <div class="container">
+          <h2 class="headline headline-2 section-title"><a href="{% url 'country_list' %}"><span class="span">All Country</span></a></h2>
+    
+          <p class="section-text">Featured and highly rated articles</p>
+    
+          <ul class="feature-list">
+            {% for card in countries %}
+              <li>
+                {% include 'components/card_sm.html' with card=card %}
+              </li>
+            {% endfor %}
+          </ul>
+    
+          <a href="{% url 'country_list' %}" class="btn btn-secondary">
+            <span class="span">Show More Posts</span>
+    
+            <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+          </a>
+        </div>
+    
+        <img src="{% static './assets/images/shadow-3.svg' %}" width="500" height="1500" loading="lazy" alt="" class="feature-bg" />
+      </section>
+
+
+      
+
+  <!--  
+        - #Recent Country
+       -->
+
+       <section class="section feature" aria-label="feature" id="featured">
+        <div class="container">
+          <h2 class="headline headline-2 section-title"><a href="{% url 'places_list' %}"><span class="span">All Places to visit</span></a></h2>
+    
+          <p class="section-text">Featured and highly rated articles</p>
+    
+          <ul class="feature-list">
+            {% for card in places %}
+              <li>
+                {% include 'components/card_sm.html' with card=card %}
+              </li>
+            {% endfor %}
+          </ul>
+    
+          <a href="{% url 'places_list' %}" class="btn btn-secondary">
+            <span class="span">Show More Posts</span>
+    
+            <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+          </a>
+        </div>
+    
+        <img src="{% static './assets/images/shadow-3.svg' %}" width="500" height="1500" loading="lazy" alt="" class="feature-bg" />
+      </section>
+
+ 
+{% endblock %}

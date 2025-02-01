@@ -1,0 +1,31 @@
+{% extends 'base_layout.html' %}
+
+{% block title %}
+  <title>{{ post.meta_title }}</title>
+  <!-- Schema Markup for the post -->
+  <meta name="description" content="{{ post.meta_description }}" />
+  <meta name="keyword" content="{{ post.meta_keywords }}" />
+
+  <meta property="og:title" content="{{ post.meta_title }}" />
+  <meta property="og:description" content="{{ post.meta_description|truncatewords:60|safe }}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="{{ post.get_absolute_url }}" />
+  <meta property="og:updated_time" content="{{ post.update_date }}" />
+  <meta property="og:image" content="{{ post.photo.url }}" />
+
+  <meta name="robots" content="index, follow" />
+
+  {% include 'components/schema_card.html' with card=post %}
+{% endblock %}
+
+{% block content %}
+  <div class="col-12 col-md-8 mb-5 mb-lg-0">
+    <article itemscope itemtype="https://schema.org/BlogPosting" itemid="{{ request.build_absolute_uri }}">
+      {% include 'components/post_card.html' with card=post %}
+      <p>{{ post.content|safe }}</p>
+
+    {% include "components/comments.html" with post_id=post.id %}
+  </article>
+    
+  </div>
+{% endblock %}

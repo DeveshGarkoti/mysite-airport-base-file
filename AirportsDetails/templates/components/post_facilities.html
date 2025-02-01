@@ -1,0 +1,349 @@
+{% if card.facilities_available.all %}
+<br>
+  <div class="">
+    {% if layout == 'Layout One' %}
+      <h2 class="headline headline-3">These facilities are available at {{ card.title }}</h2>
+      {% for facility in card.facilities_available.all %}
+        <figure class="post-slider mb-4">
+          {% if facility.photo %}
+            <div class="image-container">
+              
+              {% include 'components/image_sm.html' with photo=facility.photo alt=facility.photo_alt|add:" "|add:card.title  %}
+            </div>
+          {% endif %}
+        </figure>
+        <h3 class="h5" itemprop="name">{{ facility.title }} at {{ card.title }}</h3>
+
+        <section class="card-content" itemprop="description">
+          <p>{{ facility.content|safe }}</p>
+        </section>
+      {% empty %}
+        <li>No facility to Visit associated with {{ card.title }}.</li>
+      {% endfor %}
+    {% elif layout == 'Layout Two' %}
+      <h2 class="headline headline-3">You can find these Facilities at {{ card.title }}</h2>
+      {% for facility in card.facilities_available.all|slice:'::-1' %}
+        <ul >
+          <li>{{ facility.title }}</li>
+        </ul>
+      {% empty %}
+        <li>No facility to Visit associated with {{ card.title }}.</li>
+      {% endfor %}
+    {% elif layout == 'Layout Heading' %}
+      <h2 class="headline headline-3">{{ card.title }} offers the following facilities.</h2>
+      {% for facility in card.facilities_available.all|slice:'::-1' %}
+        <ul>
+          <li>{{ facility.title }}</li>
+        </ul>
+      {% empty %}
+        <li>No facility to Visit associated with {{ card.title }}.</li>
+      {% endfor %}
+    {% elif layout == 'Layout Images' %}
+      <h2 class="headline headline-3">The facilities listed are found at {{ card.title }}</h2>
+      <div class="row">
+        {% for facility in card.facilities_available.all|slice:'::-1' %}
+          <div class="col-md-6">
+            <figure class="post-slider mb-4">
+              {% if facility.photo %}
+                <div class="image-container">
+                  {% include 'components/image_sm.html' with photo=facility.photo alt=facility.photo_alt|add:" "|add:card.title  %}
+                </div>
+              {% endif %}
+            </figure>
+            <p class="h5" itemprop="name">{{ facility.title }} for {{ card.title }}</p>
+          </div>
+        {% empty %}
+          <li>No facility to Visit associated with {{ card.title }}.</li>
+        {% endfor %}
+      </div>
+    {% elif layout == 'Layout Reverse' %}
+      <h2 class="headline headline-3">At {{ card.title }}, you’ll find these facilities.</h2>
+      {% for facility in card.facilities_available.all|slice:':5'|slice:'::-1' %}
+        <figure class="post-slider mb-4">
+          {% if facility.photo %}
+            <div class="image-container">
+              {% include 'components/image_sm.html' with photo=facility.photo alt=facility.photo_alt|add:" "|add:card.title  %}
+            </div>
+          {% endif %}
+        </figure>
+        <h3 class="h5" itemprop="name">{{ card.title }} – {{ facility.title }}</h3>
+
+        <section class="card-content" itemprop="description">
+          <p>{{ facility.content|safe }}</p>
+        </section>
+      {% empty %}
+        <li>No facility to Visit associated with {{ card.title }}.</li>
+      {% endfor %}
+    {% elif layout == 'Layout First 4' %}
+      <h2 class="headline headline-3">{{ card.title }} provides these facilities for travelers.</h2>
+      {% for facility in card.facilities_available.all|slice:':4' %}
+        <figure class="post-slider mb-4">
+          {% if facility.photo %}
+            <div class="image-container">
+              {% include 'components/image_sm.html' with photo=facility.photo alt=facility.photo_alt|add:" "|add:card.title  %}
+            </div>
+          {% endif %}
+        </figure>
+        <h3 class="h5" itemprop="name">{{ card.title }}: {{ facility.title }}</h3>
+
+        <section class="card-content" itemprop="description">
+          <p>{{ facility.content|safe }}</p>
+        </section>
+      {% empty %}
+        <li>No facility to Visit associated with {{ card.title }}.</li>
+      {% endfor %}
+    {% elif layout == 'Layout First 5' %}
+      <h2 class="headline headline-3">Travelers at {{ card.title }} have access to these facilities.</h2>
+      {% for facility in card.facilities_available.all|slice:':5' %}
+        <figure class="post-slider mb-4">
+          {% if facility.photo %}
+            <div class="image-container">
+              {% include 'components/image_sm.html' with photo=facility.photo alt=facility.photo_alt|add:" "|add:card.title  %}
+            </div>
+          {% endif %}
+        </figure>
+        <h3 class="h5" itemprop="name">{{ facility.title }} of {{ card.title }}</h3>
+
+        <section class="card-content" itemprop="description">
+          <p>{{ facility.content|safe }}</p>
+        </section>
+      {% empty %}
+        <li>No facility to Visit associated with {{ card.title }}.</li>
+      {% endfor %}
+    {% elif layout == 'Layout First 6' %}
+      <h2 class="headline headline-3">These are the facilities offered at {{ card.title }}.</h2>
+      {% for facility in card.facilities_available.all|slice:':6' %}
+        <figure class="post-slider mb-4">
+          {% if facility.photo %}
+            <div class="image-container">
+              {% include 'components/image_sm.html' with photo=facility.photo alt=facility.photo_alt|add:" "|add:card.title  %}
+            </div>
+          {% endif %}
+        </figure>
+        <h3 class="h5" itemprop="name">{{ card.title }}’s {{ facility.title }}</h3>
+
+        <section class="card-content" itemprop="description">
+          <p>{{ facility.content|safe }}</p>
+        </section>
+      {% empty %}
+        <li>No facility to Visit associated with {{ card.title }}.</li>
+      {% endfor %}
+    {% elif layout == 'Layout First 8' %}
+      <h2 class="headline headline-3">Visitors can enjoy these facilities at {{ card.title }}.</h2>
+      {% for facility in card.facilities_available.all|slice:':8' %}
+        <figure class="post-slider mb-4">
+          {% if facility.photo %}
+            <div class="image-container">
+              {% include 'components/image_sm.html' with photo=facility.photo alt=facility.photo_alt|add:" "|add:card.title  %}
+            </div>
+          {% endif %}
+        </figure>
+        <h3 class="h5" itemprop="name">{{ facility.title }} in {{ card.title }}</h3>
+
+        <section class="card-content" itemprop="description">
+          <p>{{ facility.content|safe }}</p>
+        </section>
+      {% empty %}
+        <li>No facility to Visit associated with {{ card.title }}.</li>
+      {% endfor %}
+    {% elif layout == 'Layout From 2 To 6' %}
+      <h2 class="headline headline-3">{{ card.title }} has these facilities for convenience.</h2>
+      {% for facility in card.facilities_available.all|slice:'2:6' %}
+        <figure class="post-slider mb-4">
+          {% if facility.photo %}
+            <div class="image-container">
+              {% include 'components/image_sm.html' with photo=facility.photo alt=facility.photo_alt|add:" "|add:card.title  %}
+            </div>
+          {% endif %}
+        </figure>
+        <h3 class="h5" itemprop="name">{{ facility.title }} provided by {{ card.title }}</h3>
+
+        <section class="card-content" itemprop="description">
+          <p>{{ facility.content|safe }}</p>
+        </section>
+      {% empty %}
+        <li>No facility to Visit associated with {{ card.title }}.</li>
+      {% endfor %}
+    {% elif layout == 'Layout From 3 To 7' %}
+      <h2 class="headline headline-3">The following facilities are offered at {{ card.title }}.</h2>
+      {% for facility in card.facilities_available.all|slice:'3:7' %}
+        <figure class="post-slider mb-4">
+          {% if facility.photo %}
+            <div class="image-container">
+              {% include 'components/image_sm.html' with photo=facility.photo alt=facility.photo_alt|add:" "|add:card.title  %}
+            </div>
+          {% endif %}
+        </figure>
+        <h3 class="h5" itemprop="name">{{ card.title }} includes {{ facility.title }}</h3>
+
+        <section class="card-content" itemprop="description">
+          <p>{{ facility.content|safe }}</p>
+        </section>
+      {% empty %}
+        <li>No facility to Visit associated with {{ card.title }}.</li>
+      {% endfor %}
+    {% elif layout == 'Layout From 4 To 8' %}
+      <h2 class="headline headline-3">Facilities like these are available at {{ card.title }}.</h2>
+      {% for facility in card.facilities_available.all|slice:'4:8' %}
+        <figure class="post-slider mb-4">
+          {% if facility.photo %}
+            <div class="image-container">
+              {% include 'components/image_sm.html' with photo=facility.photo alt=facility.photo_alt|add:" "|add:card.title  %}
+            </div>
+          {% endif %}
+        </figure>
+        <h3 class="h5" itemprop="name">{{ card.title }} – Facility: {{ facility.title }}</h3>
+
+        <section class="card-content" itemprop="description">
+          <p>{{ facility.content|safe }}</p>
+        </section>
+      {% empty %}
+        <li>No facility to Visit associated with {{ card.title }}.</li>
+      {% endfor %}
+    {% elif layout == 'Layout Last 3' %}
+      <h2 class="headline headline-3">{{ card.title }} includes these facilities for guests.</h2>
+      {% for facility in card.facilities_available.all|slice:'9:13' %}
+        <figure class="post-slider mb-4">
+          {% if facility.photo %}
+            <div class="image-container">
+              {% include 'components/image_sm.html' with photo=facility.photo alt=facility.photo_alt|add:" "|add:card.title  %}
+            </div>
+          {% endif %}
+        </figure>
+        <h3 class="h5" itemprop="name">{{ facility.title }} offered at {{ card.title }}</h3>
+
+        <section class="card-content" itemprop="description">
+          <p>{{ facility.content|safe }}</p>
+        </section>
+      {% empty %}
+        <li>No facility to Visit associated with {{ card.title }}.</li>
+      {% endfor %}
+    {% elif layout == 'Layout Last 4' %}
+      <h2 class="headline headline-3">You can access these amenities at {{ card.title }}</h2>
+      {% for facility in card.facilities_available.all|slice:'5:9' %}
+        <figure class="post-slider mb-4">
+          {% if facility.photo %}
+            <div class="image-container">
+              {% include 'components/image_sm.html' with photo=facility.photo alt=facility.photo_alt|add:" "|add:card.title  %}
+            </div>
+          {% endif %}
+        </figure>
+        <h3 class="h5" itemprop="name">{{ facility.title }} available at {{ card.title }}</h3>
+
+        <section class="card-content" itemprop="description">
+          <p>{{ facility.content|safe }}</p>
+        </section>
+      {% empty %}
+        <li>No facility to Visit associated with {{ card.title }}.</li>
+      {% endfor %}
+    {% elif layout == 'Layout Last 5' %}
+      <h2 class="headline headline-3">These amenities are available for guests at {{ card.title }}.</h2>
+      {% for facility in card.facilities_available.all|slice:'6:10' %}
+        <figure class="post-slider mb-4">
+          {% if facility.photo %}
+            <div class="image-container">
+              {% include 'components/image_sm.html' with photo=facility.photo alt=facility.photo_alt|add:" "|add:card.title  %}
+            </div>
+          {% endif %}
+        </figure>
+        <h3 class="h5" itemprop="name">{{ facility.title }} offered by {{ card.title }}</h3>
+
+        <section class="card-content" itemprop="description">
+          <p>{{ facility.content|safe }}</p>
+        </section>
+      {% empty %}
+        <li>No facility to Visit associated with {{ card.title }}.</li>
+      {% endfor %}
+    {% elif layout == 'Layout Leave 1' %}
+      <h2 class="headline headline-3">Discover these facilities at {{ card.title }}.</h2>
+      {% for facility in card.facilities_available.all|slice:'0::2' %}
+        <figure class="post-slider mb-4">
+          {% if facility.photo %}
+            <div class="image-container">
+              {% include 'components/image_sm.html' with photo=facility.photo alt=facility.photo_alt|add:" "|add:card.title  %}
+            </div>
+          {% endif %}
+        </figure>
+        <h3 class="h5" itemprop="name">{{ facility.title }} within {{ card.title }}</h3>
+
+        <section class="card-content" itemprop="description">
+          <p>{{ facility.content|safe }}</p>
+        </section>
+      {% empty %}
+        <li>No facility to Visit associated with {{ card.title }}.</li>
+      {% endfor %}
+    {% elif layout == 'Layout Leave 2' %}
+      <h2 class="headline headline-3">The facilities listed can be accessed at {{ card.title }}.</h2>
+      {% for facility in card.facilities_available.all|slice:'0::3' %}
+        <figure class="post-slider mb-4">
+          {% if facility.photo %}
+            <div class="image-container">
+              {% include 'components/image_sm.html' with photo=facility.photo alt=facility.photo_alt|add:" "|add:card.title  %}
+            </div>
+          {% endif %}
+        </figure>
+        <h3 class="h5" itemprop="name">{{ card.title }} includes facility: {{ facility.title }}</h3>
+
+        <section class="card-content" itemprop="description">
+          <p>{{ facility.content|safe }}</p>
+        </section>
+      {% empty %}
+        <li>No facility to Visit associated with {{ card.title }}.</li>
+      {% endfor %}
+    {% elif layout == 'Layout Leave 3' %}
+      <h2 class="headline headline-3">Travelers at {{ card.title }} can use these amenities.</h2>
+      {% for facility in card.facilities_available.all|slice:'0::4' %}
+        <figure class="post-slider mb-4">
+          {% if facility.photo %}
+            <div class="image-container">
+              {% include 'components/image_sm.html' with photo=facility.photo alt=facility.photo_alt|add:" "|add:card.title  %}
+            </div>
+          {% endif %}
+        </figure>
+        <h3 class="h5" itemprop="name">{{ card.title }} with {{ facility.title }}</h3>
+
+        <section class="card-content" itemprop="description">
+          <p>{{ facility.content|safe }}</p>
+        </section>
+      {% empty %}
+        <li>No facility to Visit associated with {{ card.title }}.</li>
+      {% endfor %}
+    {% elif layout == 'Layout Leave 4' %}
+      <h2 class="headline headline-3">You can find these Facilities at {{ card.title }}</h2>
+      {% for facility in card.facilities_available.all|slice:'1::4' %}
+        <figure class="post-slider mb-4">
+          {% if facility.photo %}
+            <div class="image-container">
+              {% include 'components/image_sm.html' with photo=facility.photo alt=facility.photo_alt|add:" "|add:card.title  %}
+            </div>
+          {% endif %}
+        </figure>
+        <h3 class="h5" itemprop="name">{{ card.title }} featuring {{ facility.title }}</h3>
+
+        <section class="card-content" itemprop="description">
+          <p>{{ facility.content|safe }}</p>
+        </section>
+      {% empty %}
+        <li>No facility to Visit associated with {{ card.title }}.</li>
+      {% endfor %}
+    {% else %}
+      <h2 class="headline headline-3">All Facilities Available for {{ card.title }}</h2>
+      {% for facility in card.facilities_available.all %}
+        <figure class="post-slider mb-4">
+          {% if facility.photo %}
+            <div class="image-container">
+              {% include 'components/image_sm.html' with photo=facility.photo alt=facility.photo_alt|add:" "|add:card.title  %}
+            </div>
+          {% endif %}
+        </figure>
+        <h3 class="h5" itemprop="name">{{ card.title }} has {{ facility.title }}</h3>
+
+        <section class="card-content" itemprop="description">
+          <p>{{ facility.content|safe }}</p>
+        </section>
+      {% empty %}
+        <li>No facility to Visit associated with {{ card.title }}.</li>
+      {% endfor %}
+    {% endif %}
+  </div>
+{% endif %}

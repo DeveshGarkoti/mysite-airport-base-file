@@ -1,0 +1,69 @@
+<script type="application/ld+json">
+  {
+      "@context": "https://schema.org/",
+      "@type": "BlogPosting",
+      "@id": "{{ request.build_absolute_uri }}",
+      "mainEntityOfPage": "{{ request.build_absolute_uri }}",
+      "headline": "{{ card.title }}",
+      "name": "{{ card.title }}",
+      "description": "{{ card.content|striptags }}",
+      "datePublished": "{{ card.publish_date|date:"Y-m-d\TH:i:sP"  }}",
+      "dateModified": "{{ card.update_date|date:"Y-m-d\TH:i:sP" }}",
+      "publisher": {
+          "@type": "Organization",
+          "@id": "{{ request.site.url }}",
+          "name": "SITENAME",
+          "logo": {
+              "@type": "ImageObject",
+                {% if card.photo  %}
+                "@id": "{{ card.photo.url }}",
+                "url": "{{ card.photo.url }}",
+
+                {% elif card.airport.photo %}
+                "@id": "{{ card.airport.photo.url }}",
+                "url": "{{ card.airport.photo.url }}",
+
+                {% elif card.airline.photo %}
+                "@id": "{{ card.airline.photo.url }}",
+                "url": "{{ card.airline.photo.url }}",
+                {% endif %}
+              "width": "600",
+              "height": "60"
+          }
+      },
+      "image": {
+          "@type": "ImageObject",
+          {% if card.photo  %}
+                "@id": "{{ card.photo.url }}",
+                "url": "{{ card.photo.url }}",
+
+                {% elif card.airport.photo %}
+                "@id": "{{ card.airport.photo.url }}",
+                "url": "{{ card.airport.photo.url }}",
+
+                {% elif card.airline.photo %}
+                "@id": "{{ card.airline.photo.url }}",
+                "url": "{{ card.airline.photo.url }}",
+                {% endif %}
+          "height": "362",
+          "width": "388"
+      },
+      "url": "{{ request.build_absolute_uri }}",
+
+        {% if card.content %}
+       "wordCount": {{ card.content | wordcount }} ,         
+       {% endif %}
+       "isPartOf": {
+        "@type" : "Blog",
+         "@id": "{{ request.build_absolute_uri }}",
+         "name": "{% url "post_list" %}",
+         "publisher": {
+             "@type": "Organization",
+             "@id": "{% url "index" %}",
+             "name": "{{ request.site.url }}"
+         }
+     }
+      
+  }
+  
+</script>

@@ -1,0 +1,294 @@
+{% if cards %}
+  <div class="">
+    {% if layout == 'Layout One' %}
+      <div class="">
+        <h2 class="headline headline-3">{{ card.title }} Airplane Fleet</h2>
+
+        <div class="">
+          {% for card in cards %}
+            <div class="card feature-card">
+              <div class="card-title" title=" {{ card }}">
+                <strong>{{ card }}</strong>
+              </div>
+            </div>
+            <br />
+          {% endfor %}
+        </div>
+      </div>
+    {% elif layout == 'Layout Two' %}
+      <div class="">
+        <h2 class="headline headline-3">{{ card.title }} Fleet</h2>
+
+        <div class="">
+          {% for card in cards %}
+            <div class="card feature-card">
+              <div class="card-title" title=" {{ card }}">
+                <strong>{{ card }}</strong>
+              </div>
+            </div>
+            <br />
+          {% endfor %}
+        </div>
+      </div>
+    {% elif layout == 'Layout Heading' %}
+      <div class="">
+        <h2 class="headline headline-3">Aircraft Operated by {{ card.title }}s</h2>
+
+        <div class="">
+          {% for card in cards %}
+            <div class="card feature-card">
+              <div class="card-title" title=" {{ card }}">
+                <strong>{{ card }}</strong>
+              </div>
+            </div>
+            <br />
+          {% endfor %}
+        </div>
+      </div>
+    {% elif layout == 'Layout Images' %}
+      <div class="">
+        <h2 class="headline headline-3">{{ card.title }}s’ Airplanes</h2>
+
+        <div class="">
+          {% for card in cards %}
+            <div class="card feature-card">
+              <div class="card-title" title=" {{ card }}">
+                <strong>{{ card }}</strong>
+              </div>
+            </div>
+            <br />
+          {% endfor %}
+        </div>
+      </div>
+    {% elif layout == 'Layout Reverse' %}
+      <div class="">
+        <h2 class="headline headline-3">{{ card.title }} Planes</h2>
+
+        <div class="">
+          {% for card in cards %}
+            <div class="card feature-card">
+              <div class="card-title" title=" {{ card }}">
+                <strong>{{ card }}</strong>
+              </div>
+            </div>
+            <br />
+          {% endfor %}
+        </div>
+      </div>
+    {% elif layout == 'Layout First 4' %}
+      <div class="">
+        <h2 class="headline headline-3">Aircraft in the {{ card.title }} Fleet</h2>
+
+        <div class="">
+          {% for card in cards %}
+            <div class="card feature-card">
+              <div class="card-title" title=" {{ card }}">
+                <strong>{{ card }}</strong>
+              </div>
+            </div>
+            <br />
+          {% endfor %}
+        </div>
+      </div>
+    {% elif layout == 'Layout First 5' %}
+      <div class="">
+        <h2 class="headline headline-3">{{ card.title }}’s Airfleet</h2>
+
+        <div class="">
+          {% for card in cards %}
+            <div class="card feature-card">
+              <div class="card-title" title=" {{ card }}">
+                <strong>{{ card }}</strong>
+              </div>
+            </div>
+            <br />
+          {% endfor %}
+        </div>
+      </div>
+    {% elif layout == 'Layout First 6' %}
+      <div class="">
+        <h2 class="headline headline-3">{{ card.title }} {{ title }}</h2>
+
+        <div class="">
+          {% for card in cards %}
+            <div class="card feature-card">
+              <div class="card-title" title=" {{ card }}">
+                <strong>{{ card }}</strong>
+              </div>
+            </div>
+            <br />
+          {% endfor %}
+        </div>
+      </div>
+    {% elif layout == 'Layout First 8' %}
+      <div class="">
+        <h2 class="headline headline-3">{{ card.title }}s’ Planes</h2>
+
+        <div class="">
+          {% for card in cards %}
+            <div class="card feature-card">
+              <div class="card-title" title=" {{ card }}">
+                <strong>{{ card }}</strong>
+              </div>
+            </div>
+            <br />
+          {% endfor %}
+        </div>
+      </div>
+    {% elif layout == 'Layout From 2 To 6' %}
+      <div class="">
+        <h2 class="headline headline-3">{{ card.title }}'s Aircraft Collection</h2>
+
+        <div class="">
+          {% for card in cards %}
+            <div class="card feature-card">
+              <div class="card-title" title=" {{ card }}">
+                <strong>{{ card }}</strong>
+              </div>
+            </div>
+            <br />
+          {% endfor %}
+        </div>
+      </div>
+    {% elif layout == 'Layout From 3 To 7' %}
+      <div class="">
+        <h2 class="headline headline-3">{{ card.title }}’s Aircraft Lineup</h2>
+
+        <div class="">
+          {% for card in cards %}
+            <div class="card feature-card">
+              <div class="card-title" title=" {{ card }}">
+                <strong>{{ card }}</strong>
+              </div>
+            </div>
+            <br />
+          {% endfor %}
+        </div>
+      </div>
+    {% elif layout == 'Layout From 4 To 8' %}
+      <div class="">
+        <h2 class="headline headline-3">Fleet of {{ card.title }} Aircraft</h2>
+
+        <div class="">
+          {% for card in cards %}
+            <div class="card feature-card">
+              <div class="card-title" title=" {{ card }}">
+                <strong>{{ card }}</strong>
+              </div>
+            </div>
+            <br />
+          {% endfor %}
+        </div>
+      </div>
+    {% elif layout == 'Layout Last 3' %}
+      <div class="">
+        <h2 class="headline headline-3">{{ card.title }} {{ card.title }}rs</h2>
+
+        <div class="">
+          {% for card in cards %}
+            <div class="card feature-card">
+              <div class="card-title" title=" {{ card }}">
+                <strong>{{ card }}</strong>
+              </div>
+            </div>
+            <br />
+          {% endfor %}
+        </div>
+      </div>
+    {% elif layout == 'Layout Last 4' %}
+      <div class="">
+        <h2 class="headline headline-3">Aircraft Used by {{ card.title }}s</h2>
+
+        <div class="">
+          {% for card in cards %}
+            <div class="card feature-card">
+              <div class="card-title" title=" {{ card }}">
+                <strong>{{ card }}</strong>
+              </div>
+            </div>
+            <br />
+          {% endfor %}
+        </div>
+      </div>
+    {% elif layout == 'Layout Last 5' %}
+      <div class="">
+        <h2 class="headline headline-3">{{ card.title }}-Owned Aircraft</h2>
+
+        <div class="">
+          {% for card in cards %}
+            <div class="card feature-card">
+              <div class="card-title" title=" {{ card }}">
+                <strong>{{ card }}</strong>
+              </div>
+            </div>
+            <br />
+          {% endfor %}
+        </div>
+      </div>
+    {% elif layout == 'Layout Leave 1' %}
+      <div class="">
+        <h2 class="headline headline-3">Aircraft in {{ card.title }}s' Fleet</h2>
+
+        <div class="">
+          {% for card in cards %}
+            <div class="card feature-card">
+              <div class="card-title" title=" {{ card }}">
+                <strong>{{ card }}</strong>
+              </div>
+            </div>
+            <br />
+          {% endfor %}
+        </div>
+      </div>
+    {% elif layout == 'Layout Leave 2' %}
+      <div class="">
+        <h2 class="headline headline-3">{{ card.title }}s’ Aviation Fleet</h2>
+
+        <div class="">
+          {% for card in cards %}
+            <div class="card feature-card">
+              <div class="card-title" title=" {{ card }}">
+                <strong>{{ card }}</strong>
+              </div>
+            </div>
+            <br />
+          {% endfor %}
+        </div>
+      </div>
+    {% elif layout == 'Layout Leave 3' %}
+      <div class="">
+        <h2 class="headline headline-3">{{ card.title }}’s Plane Collection</h2>
+
+        <div class="">
+          {% for card in cards %}
+            <div class="card feature-card">
+              <div class="card-title" title=" {{ card }}">
+                <strong>{{ card }}</strong>
+              </div>
+            </div>
+            <br />
+          {% endfor %}
+        </div>
+      </div>
+    {% elif layout == 'Layout Leave 4' %}
+      <div class="">
+        <h2 class="headline headline-3">{{ card.title }}-Operated Aircraft</h2>
+
+        <div class="">
+          {% for card in cards %}
+            <div class="card feature-card">
+              <div class="card-title" title=" {{ card }}">
+                <strong>{{ card }}</strong>
+              </div>
+            </div>
+            <br />
+          {% endfor %}
+        </div>
+      </div>
+    {% else %}
+
+    {% endif %}
+  </div>
+{% else %}
+
+{% endif %}

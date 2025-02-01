@@ -1,0 +1,68 @@
+{% extends 'base_layout.html' %}
+
+{% load custom_filters %}
+{% load static %}
+
+{% block title %}
+  <title>Posts</title>
+  <!-- Schema Markup for the Airline -->
+  <meta name="description" content="Posts " />
+  <meta name="keyword" content="Posts " />
+
+  <meta property="og:title" content="Posts " />
+  <meta property="og:description" content="Posts " />
+  <meta property="og:type" content="website" />
+
+  <meta name="robots" content="index, follow" />
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "itemListElement": [
+        {% for card in posts  %}
+        {
+          "@type": "ListItem",
+          "position": {{ forloop.counter }},
+          "name": "{{ card.title }}"
+        }
+        {% if not forloop.last %},{% endif %}
+        {% endfor %}
+      ]
+    }
+    </script>
+{% endblock %}
+
+{% block content %}
+ 
+  
+        <div class="post-main">
+          <div class="">
+            <h2 class="headline headline-2 section-title"><a href="{% url 'post_list' %}"><span class="span">Recent posts</span></a></h2>
+
+            <p class="section-text">Don't miss the latest trends</p>
+
+            <ul class="grid-list">
+              {% for card in posts %}
+                <li>
+                  {% include "components/left_card.html" with card=card %}
+                  
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+
+        </div>
+
+
+
+        <!----
+        Aside
+        -->
+
+
+        
+
+    <!-- Pagination controls if paginate_by is used -->
+    {% include 'components/pagination.html' %}
+{% endblock %}

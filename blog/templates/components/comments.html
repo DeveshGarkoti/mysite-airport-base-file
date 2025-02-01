@@ -1,0 +1,32 @@
+{% load crispy_forms_tags %}
+<br>
+{% if user.is_authenticated %}
+  <h3 class="headline headline-3">Add a Comment</h3>
+  <div class="card feature-card">
+    <form method="POST" action="{% url 'add_comment' content_type.id object_id %}" class="mb-3">
+      {% csrf_token %}
+      {{ comment_form.comment_text|as_crispy_field }}
+      <!-- Using crispy forms for better styling -->
+      <button type="submit" class="btn btn-primary">Submit Comment</button>
+    </form>
+  </div>
+{% else %}
+  <p>
+    You must be <a href="{% url 'login' %}">logged in</a> to comment.
+  </p>
+{% endif %}
+<br />
+
+<h2 class="headline headline-4">Comments</h2>
+
+<div class="list-group">
+  {% for comment in comments %}
+    <div class="card feature-card">
+      <h5 class="mb-1">{{ comment.user }} <small class="text-muted">{{ comment.created_at }}</small></h5>
+      <p class="mb-1">{{ comment.comment_text }}</p>
+    </div>
+    <br />
+  {% empty %}
+    <div class="alert alert-info" role="alert">No comments yet.</div>
+  {% endfor %}
+</div>

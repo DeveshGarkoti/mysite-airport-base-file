@@ -1,0 +1,16 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+  <div class="col-12 col-md-8 mb-5 mb-lg-0">
+    <h2 class="h5 section-title">Frequently Asked Questions</h2>
+      {% for faq in faqs %}
+        <li>
+          <a href="{{ faq.get_absolute_url }}">{{ faq.question }}</a>
+        </li>
+      {% endfor %}
+
+      <hr>
+    <!-- Pagination controls if paginate_by is used -->
+    {% include 'components/search_pagination.html' %}
+  </div>
+{% endblock %}

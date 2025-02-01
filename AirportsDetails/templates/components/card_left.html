@@ -1,0 +1,80 @@
+{% load static %}
+
+<article class="rounded-lg mb-4 card-gradient-hover">
+  <div class="row card-body">
+    <div class="col-md-4 mb-4 mb-md-0">
+      <div class="post-slider slider-sm">
+        {% if card.photo %}
+          {% include 'components/image_sm.html' with photo=card.photo alt=card.photo_alt %}
+        {% endif %}
+
+        {% if card.airport.photo %}
+          {% include 'components/image_sm.html' with photo=card.airport.photo alt=card.airport.photo_alt %}
+        {% endif %}
+
+        {% if card.airline.photo %}
+          {% include 'components/image_sm.html' with photo=card.airline.photo alt=card.airline.photo_alt %}
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="col-md-8">
+      <h3 class="h4 mb-3 post-title">
+        {% if card.get_absolute_url %}
+          <a class="post-title" href="{{ card.get_absolute_url }}">
+            {{ card.title }}
+            {% if card.iso_alpha2 %}
+              <i class="fi fi-{{ card.iso_alpha2 }} rounded"></i>
+            {% endif %}
+          </a>
+        {% else %}
+          {{ card.title }}
+          {% if card.iso_alpha2 %}
+            <i class="fi fi-{{ card.iso_alpha2 }} rounded"></i>
+          {% endif %}
+        {% endif %}
+      </h3>
+
+      <ul class="card-meta list-inline">
+        {% if card.office %}
+          <li class="list-inline-item">
+            <strong>Office</strong> :- {{ card.office }}
+          </li>
+        {% endif %}
+
+        {% if card.airline %}
+          <li class="list-inline-item">
+            <strong>Airlines</strong> :- {{ card.airline }}
+          </li>
+        {% endif %}
+
+        {% if card.airport %}
+          <li class="list-inline-item">
+            <strong>Airport</strong> :- {{ card.airport }}
+          </li>
+        {% endif %}
+
+        {% if card.icao_code %}
+          <li class="list-inline-item">
+            <strong>Airlines Code</strong> :- {{ card.icao_code }}
+          </li>
+        {% endif %}
+
+        {% if card.country %}
+          <li class="list-inline-item">
+            <strong>Country</strong> :-
+            <i class="fi fi-{{ card.country.iso_alpha2 }} rounded"></i> {{ card.country }}
+          </li>
+        {% endif %}
+      </ul>
+
+      {% if card.content %}
+        <p>{{ card.content|truncatewords:60|safe }}.</p>
+      {% endif %}
+
+      {% if card.get_absolute_url %}
+        <a href="{{ card.get_absolute_url }}">Read More</a>
+      {% endif %}
+    </div>
+  </div>
+</article>

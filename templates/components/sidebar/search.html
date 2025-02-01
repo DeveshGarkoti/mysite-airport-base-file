@@ -1,0 +1,10 @@
+<!-- Search -->
+
+<div class="card aside-card">
+  <h3 class="headline headline-2 aside-title"><span class="span">Search</span></h3>
+  <form action="{% url 'search' %}" method="get" class="card-wrapper">
+    <input class="input-field  border" id="search-query" name="q" value="{{ request.GET.q }}" type="search" placeholder="Type &amp; Hit Enter..." />
+    <button type="submit" class="btn btn-primary btn-block m">Search<ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon></button>
+  </form>
+  
+</div>

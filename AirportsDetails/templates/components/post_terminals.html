@@ -1,0 +1,16 @@
+
+<section>
+  <div class="post-main">
+    <br>
+    <h2 class="headline headline-3 section-title"><a href="{% url all_url slug %}">All {{category}} in {{ card.title }}</a></h2>
+    <ul class="grid-list">
+      {% for item in cards %}
+        <li>
+          {% include 'components/left_card.html' with card=item %}
+        </li>
+      {% empty %}
+        <li>No {{category}} associated with {{ card.title }}.</li>
+      {% endfor %}
+      </ul>
+  </div>
+</section>

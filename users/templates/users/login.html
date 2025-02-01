@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  <title>Login</title>
+  <!-- Schema Markup for the faq -->
+  <meta name="description" content="Login to website" />
+  <meta name="keyword" content="Login to airports" />
+
+  <meta name="robots" content="index, follow" />
+{% endblock %}
+
+{% block content %}
+<br>
+<br>
+  <section class="section">
+    <div class="container">
+      <div class="card feature-card">
+        <form method="POST" class="widget-search">
+          <h2 class="headline headline-2">Login</h2>
+          {% csrf_token %}
+          {% if form.errors %}
+            {% for field, errors in form.errors.items %}
+              {% for error in errors %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                  <strong>{{ field|capfirst }}:</strong> {{ error }}
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <strong></strong>
+              {% endfor %}
+            {% endfor %}
+          {% endif %}
+          {{ form.as_p }}
+          <br />
+          <button class="btn btn-primary btn-block" type="submit">Login</button>
+        </form>
+        <p class="">
+          If you are new to the site <a href="{% url 'register' %}" class="btn btn-primary ">Register</a>
+        </p>
+      </div>
+    </div>
+  </section>
+{% endblock %}

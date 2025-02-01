@@ -1,0 +1,17 @@
+{% if card.faqs.all %}
+  <div class="">
+    <h3 class="headline headline-4" id="faq">Frequently Asked Questions for {{ card.title }}</h3>
+    <br>
+    {% for faq in card.faqs.all %}
+      <div class="card feature-card">
+        <strong>{{ faq.question }}</strong>
+          <div class="p">{{ faq.answer }} </div>
+          
+        <strong><a href="{{ faq.get_absolute_url }}">Read More</a></strong>
+      </div>
+      <br />
+    {% endfor %}
+  </div>
+{% else %}
+
+{% endif %}

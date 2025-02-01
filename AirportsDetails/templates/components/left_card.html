@@ -1,0 +1,47 @@
+<div class="recent-post-card">
+  <a href="{{ card.get_absolute_url }}">
+    <figure class="card-banner img-holder" style="--width: 271; --height: 258;">
+      <div class="image-track">
+        {% if card.airport.photo %}
+          {% include 'components/image_sm.html' with photo=card.airport.photo alt=card.photo_alt|add:' - '|add:card.airport.photo_alt|add:' - '|add:card.airline.photo_alt %}
+        {% elif card.airline.photo %}
+          {% include 'components/image_sm.html' with photo=card.airline.photo alt=card.airline.photo_alt %}
+        {% elif card.photo %}
+          {% include 'components/image_sm.html' with photo=card.photo alt=card.photo_alt %}
+        {% endif %}
+      </div>
+    </figure>
+
+    <div class="card-content">
+      {% if card.categories %}
+        {% for category in card.categories.all|slice:':1' %}
+          <a href="{% url 'post_by_category' category.slug %}" class="card-badge">{{ category.title }}</a>
+        {% endfor %}
+      {% else %}
+
+      {% endif %}
+
+      <h3 class="headline headline-3 card-title"><a href="{{ card.get_absolute_url }}" class="link hover-2">{{ card.title }}</a></h3>
+
+      <p class="card-text">{{ card.meta_description|truncatewords:30 }} …</p>
+
+      <div class="card-wrapper">
+        {% if card.tags %}
+          <div class="card-tag">
+            {% for tag in card.tags.all|slice:':3' %}
+              <a href="{% url 'post_by_tag' tag.slug %}" class="span hover-2"># {{ tag.title }}</a>
+            {% endfor %}
+          </div>
+        {% else %}
+
+        {% endif %}
+
+        <div class="wrapper">
+          <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+
+          <span class="span">3 mins read</span>
+        </div>
+      </div>
+    </div>
+  </a>
+</div>

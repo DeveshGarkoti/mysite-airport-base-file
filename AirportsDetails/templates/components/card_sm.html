@@ -1,0 +1,38 @@
+{% load static %}
+
+<div class="card feature-card">
+  <a href="{{ card.get_absolute_url }}">
+    <a href="{{ card.get_absolute_url }}">
+      <figure class="card-banner img-holder" style="--width: 800; --height: 450;">
+        <div class="image-track">
+          {% if card.airport.photo %}
+            {% include 'components/image_sm.html' with photo=card.airport.photo alt=card.photo_alt|add:' - '|add:card.airport.photo_alt|add:' - '|add:card.airline.photo_alt %}
+          {% elif card.airline.photo %}
+            {% include 'components/image_sm.html' with photo=card.airline.photo alt=card.airline.photo_alt %}
+          {% elif card.photo %}
+            {% include 'components/image_sm.html' with photo=card.photo alt=card.photo_alt %}
+          {% endif %}
+        </div>
+      </figure>
+    </a>
+    <div class="card-content">
+      <div class="card-wrapper">
+        <div class="card-tag">
+          {% if card.country %}
+            <a href="{{ card.country.get_absolute_url }}" class="span hover-2">#{{ card.country }}</a>
+          {% endif %}
+
+          {% if card.airline %}
+            <a href="{{ card.airline.get_absolute_url }}" class="span hover-2">#{{ card.airline }}</a>
+          {% endif %}
+
+          {% if card.airport %}
+            <a href="{{ card.airport.get_absolute_url }}" class="span hover-2">#{{ card.airport }}</a>
+          {% endif %}
+        </div>
+      </div>
+
+      <h3 class="headline headline-3"><a href="{{ card.get_absolute_url }}" class="card-title hover-2">{{ card.title }}</a></h3>
+    </div>
+  </a>
+</div>

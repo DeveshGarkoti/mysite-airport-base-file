@@ -1,0 +1,65 @@
+{% extends 'base_layout.html' %}
+
+
+{% block title %}
+  <title>{{ country.meta_title }}</title>
+  <!-- Schema Markup for the country -->
+  <meta name="description" content="{{ country.meta_description }}" />
+  <meta name="keyword" content="{{ country.meta_keywords }}" />
+
+  <meta property="og:title" content="{{ country.meta_title }}" />
+  <meta property="og:description" content="{{ country.meta_description|truncatewords:60|safe }}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="{{ country.get_absolute_url }}" />
+  <meta property="og:updated_time" content="{{ country.update_date }}" />
+  <meta property="og:image" content="{{ country.photo.url }}" />
+
+  <meta name="robots" content="index, follow" />
+  
+  {% include 'components/schema_card.html' with card=country %}
+
+
+  
+{% endblock %}
+
+
+{% block content %}
+  <div class="col-12 col-md-8 mb-5 mb-lg-0">
+    <article itemscope itemtype="https://schema.org/BlogPosting"  itemid="{{ request.build_absolute_uri }}">
+      {% include 'components/post_card.html' with card=country %}
+
+
+      <hr />
+
+      <!-- FAQs -->
+
+      <section>
+        <h2 class="h5 section-title mt-5">Faqs</h2>
+
+        {% include 'components/post_faq_card.html' with card=country title='country' %}
+
+      </section>
+
+      {% include 'components/post_map_card.html' with card=airline %}
+      
+      <!-- Airlines -->
+    
+      {% include 'components/post_terminals.html' with category='Airlines' all_url='airlines_by_country_list' slug=country.slug card=country cards=airlines_in_country %}
+
+      <!-- Airports -->
+      {% include 'components/post_terminals.html' with category='Airports' all_url='airport_by_country_list' slug=country.slug card=country cards=airports_in_country %} 
+
+
+      <!-- Airports -->
+      {% include 'components/post_terminals.html' with category='Places to Visit' all_url='places_to_visit_by_country_list' slug=country.slug card=country cards=places_to_visit_in_country %} 
+
+      {% include "components/comments.html" with post_id=country.id %}
+
+    </article>
+
+   
+
+    <!-- Pagination controls if paginate_by is used -->
+    {% include 'components/pagination.html' %}
+  </div>
+{% endblock %}

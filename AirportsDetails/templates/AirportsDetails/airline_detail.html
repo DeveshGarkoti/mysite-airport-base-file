@@ -1,0 +1,139 @@
+{% extends 'base_layout.html' %}
+{% load custom_filters %}
+
+{% block title %}
+  <title>{{ airline.meta_title }}</title>
+  <!-- Schema Markup for the Airline -->
+  <meta name="description" content="{{ airline.meta_description }}" />
+  <meta name="keyword" content="{{ airline.meta_keywords }}" />
+
+  <meta property="og:title" content="{{ airline.meta_title }}" />
+  <meta property="og:description" content="{{ airline.meta_description|truncatewords:60|safe }}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="{{ airline.get_absolute_url }}" />
+  <meta property="og:updated_time" content="{{ airline.update_date }}" />
+  <meta property="og:image" content="{{ airline.photo.url }}" />
+
+  <meta name="robots" content="index, follow" />
+
+  {% include 'components/schema_card.html' with card=airline %}
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Airline",
+      "name": "{{ airline.title }}",
+      "iataCode": "{{ airline.iata_code }}",
+      "icaoCode": "{{ airline.icao_code }}",
+      "url": "{{ request.build_absolute_uri }}",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "{{ airline.location }}",
+        "addressCountry": "{{ airline.country.title }}"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Customer Service",
+        "telephone": "{{ airline.contact_info }}",
+        "url": "{{ airline.website }}"
+      },
+      "logo": "{{ airline.photo.url }}",
+      "areaServed": "{{ airline.area_served }}",
+      
+      "memberOf": {
+        "@type": "Organization",
+        "name": "{{ airline.country.title }}"
+      },
+      
+      "aircraft": [
+        {% for aircraft in airline.aircrafts.all %}
+        {
+          "@type": "Vehicle",
+          "name": "{{ aircraft.title }}",
+          "model": "{{ aircraft.model }}",
+        }{% if not forloop.last %},{% endif %}
+        {% endfor %}
+      ],
+    
+      "faq": [
+        {% for faq in airline.faqs.all %}
+        {
+          "@type": "Question",
+          "name": "{{ faq.question }}",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "{{ faq.answer }}"
+          }
+        }{% if not forloop.last %},{% endif %}
+        {% endfor %}
+      ],
+    
+      "sameAs": [
+      {% if airline.facebook_url %}"{{ airline.facebook_url }}"{% if airline.twitter_url or airline.linkedin_url or airline.instagram_url or airline.youtube_url %},{% endif %}{% endif %}
+      {% if airline.twitter_url %}"{{ airline.twitter_url }}"{% if airline.linkedin_url or airline.instagram_url or airline.youtube_url %},{% endif %}{% endif %}
+      {% if airline.linkedin_url %}"{{ airline.linkedin_url }}"{% if airline.instagram_url or airline.youtube_url %},{% endif %}{% endif %}
+      {% if airline.instagram_url %}"{{ airline.instagram_url }}"{% if airline.youtube_url %},{% endif %}{% endif %}
+      {% if airline.youtube_url %}"{{ airline.youtube_url }}"{% endif %}
+    ],
+      
+      "datePublished": "{{ airline.publish_date|date:'Y-m-d' }}",
+      "dateModified": "{{ airline.update_date|date:'Y-m-d' }}"
+    }
+
+  </script>
+{% endblock %}
+
+{% block content %}
+  <div class="col-12 col-md-8 mb-5 mb-lg-0">
+    <article itemscope itemtype="https://schema.org/Airline">
+      <!-- post -->
+
+      {% include 'components/post_card.html' with card=airline %}
+
+      <!-- -card Content -->
+      <!-- card Content Section -->
+
+      <section id="content" class="card-content" itemprop="description">
+        <!-- -Post Details -->
+        <p>{{ airline.content|safe }}</p>
+
+        {% include 'components/post_details_card.html' with card=airline %}
+
+        {% include 'components/post_sm_details_card.html' with card=airline cards=aircrafts_airlines title='Aircraft' %}
+        {% include 'components/post_map_card.html' with card=airline %}
+
+        <!-- -Country Details -->
+        {% include 'components/post_country_details_card.html' with card=airline %}
+
+        {% include 'components/post_country_places.html' with card=airline places=places_to_visit_in_country %}
+        
+        {% include 'components/post_services.html' with card=airline layout=airline.layout title='airport' %}
+
+        <hr />
+      </section>
+
+      <!-- FAQs -->
+      <section>
+        <h2 class="headline headline-3">Faqs</h2>
+
+        {% include 'components/post_faq_card.html' with card=airline title='airline' %}
+
+        {% include 'components/post_faq_card.html' with card=airline.country title='country' %}
+      </section>
+
+      <!-- Terminals -->
+      {% include 'components/post_terminals.html' with category='terminals' all_url='terminals_by_airline_list' slug=airline.slug card=airline cards=terminals_in_airline %}
+
+      <!-- Offices -->
+      {% include 'components/post_terminals.html' with category='Offices' all_url='offices_by_airline_list' slug=airline.slug card=airline cards=offices_in_airline %}
+
+      {% include "components/comments.html" with post_id=airline.id %}
+
+    </article>
+
+    <!-- Pagination controls if paginate_by is used -->
+    {% include 'components/pagination.html' %}
+  </div>
+
+  <!-- Schema Markup for the Airline -->
+{% endblock %}

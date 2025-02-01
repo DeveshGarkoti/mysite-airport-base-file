@@ -1,0 +1,17 @@
+
+<section>
+  <div class="">
+    <h2  class="headline headline-3">{{ card.title }} {{title}} </h2>
+
+    <div class="card feature-card">
+      {% for card in cards %}
+        <div class="rounded card-gradient-hover pl-4 pt-1">
+          <div class="card-title" title=" {{ card }}">
+            <strong >{{ card }}</strong>
+          </div>
+        </div>
+        <br />
+      {% endfor %}
+    </div>
+  </div>
+</section>

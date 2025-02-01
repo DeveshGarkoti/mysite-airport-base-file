@@ -1,0 +1,24 @@
+{% extends 'base_layout.html' %}
+
+{% block title %}
+  <title>Tags</title>
+  <!-- Schema Markup for the faq -->
+  <meta name="description" content="Tags" />
+  <meta name="keyword" content="Tags" />
+
+  <meta name="robots" content="index, follow" />
+{% endblock %}
+
+{% block content %}
+  <div class="col-lg-8 mb-5 mb-lg-0">
+    <h2 class="h5 section-title">All Tags</h2>
+
+    <ul class="list-inline widget-list-inline widget-card">
+      {% for card in tags %}
+        <li class="list-inline-item">
+          <a href="{% url 'post_by_tag' card.slug %}">{{ card.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock %}

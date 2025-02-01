@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  <title>Register</title>
+  <!-- Schema Markup for the faq -->
+  <meta name="description" content="Register to website" />
+  <meta name="keyword" content="Register to airports" />
+
+  <meta name="robots" content="index, follow" />
+{% endblock %}
+
+{% block content %}
+<br>
+<br>
+  <section class="section">
+    <div class="container">
+        <div class="card feature-card">
+          <h2 class="headline headline-2">Register</h2>
+          <form method="POST" class="widget-search">
+            {% csrf_token %}
+            
+            {% if form.errors %}
+              {% for field, errors in form.errors.items %}
+                {% for error in errors %}
+                  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>{{ field|capfirst }}:</strong> {{ error }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  </div>
+                  <strong></strong>
+                {% endfor %}
+              {% endfor %}
+            {% endif %}
+
+            {{ form.as_p }}
+            <button class="btn btn-primary btn-block" type="submit">Register</button>
+          </form>
+          <br>
+          <p class="mt-4">
+            If you already have a account <a href="{% url 'login' %}">login</a>.
+          </p>
+        </div>
+      </div>
+  </section>
+{% endblock %}

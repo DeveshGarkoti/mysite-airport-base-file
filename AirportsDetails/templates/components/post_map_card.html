@@ -1,0 +1,50 @@
+
+<!-- -card Content -->
+<!-- card Content Section -->
+<section id="map" class="card-content" >
+  <h2 class="headline headline-3">Video and Maps  </h2>
+
+<div class="row">
+
+{% if card.embed_code %}
+  <h3 class="headline headline-4 p">Video of {{ card.title }}  </h3>
+  <div class="map-container">
+    <p itemprop="map">{{ card.embed_code|safe }}</p>
+  </div>
+
+{% endif %}
+
+{% if card.embed_map %}
+  <h3 class="headline headline-4 p"> Map of {{ card.title }}</h3>
+  <div class="map-container">
+    <p >{{ card.embed_map|safe }}</p>
+  </div>
+{% endif %}
+
+
+{% if card.airport.embed_code %}
+  <h3 class="headline headline-4 p">Video of {{ card.airport.title }}  </h3>
+  <div class="map-container">
+    <p>{{ card.airport.embed_code|safe }}</p>
+  </div>
+
+{% endif %}
+
+{% if card.airport.embed_map %}
+  <h3 class="headline headline-4 p"> Map of {{ card.airport.title }}</h3>
+  <div class="map-container">
+    <p itemprop="map" >{{ card.airport.embed_map|safe }}</p>
+  </div>
+{% endif %}
+
+
+{% if card.airline.embed_code %}
+  <h3 class="headline headline-4 p">Video of {{ card.airline.title }}  </h3>
+  <div class="map-container">
+    <p>{{ card.airline.embed_code|safe }}</p>
+  </div>
+
+{% endif %}
+</div>
+
+</section>

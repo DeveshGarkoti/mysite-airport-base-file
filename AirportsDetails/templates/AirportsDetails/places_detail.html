@@ -1,0 +1,55 @@
+{% extends 'base_layout.html' %}
+
+
+{% block title %}
+  <title>{{ place.meta_title }}</title>
+  <!-- Schema Markup for the place -->
+  <meta name="description" content="{{ place.meta_description }}" />
+  <meta name="keyword" content="{{ place.meta_keywords }}" />
+
+  <meta property="og:title" content="{{ place.meta_title }}" />
+  <meta property="og:description" content="{{ place.meta_description|truncatewords:60|safe }}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="{{ place.get_absolute_url }}" />
+  <meta property="og:updated_time" content="{{ place.update_date }}" />
+  <meta property="og:image" content="{{ place.photo.url }}" />
+
+  <meta name="robots" content="index, follow" />
+  
+  {% include 'components/schema_card.html' with card=place %}
+
+
+  
+{% endblock %}
+
+
+{% block content %}  
+  <div class="col-12 col-md-8 mb-5 mb-lg-0">
+    <article itemscope itemtype="https://schema.org/BlogPosting"  itemid="{{ request.build_absolute_uri }}">
+      {% include 'components/post_card.html' with card=place %}
+
+      {% include 'components/post_country_details_card.html' with card=place %}
+
+      <hr />
+
+      <!-- FAQs -->
+      {% include 'components/post_map_card.html' with card=place %}
+
+      <section>
+        {% include 'components/post_faq_card.html' with card=place title='place' %}
+
+      </section>
+
+      {% include "components/comments.html" with post_id=place.id %}
+
+    </article>
+
+   
+
+    <!-- Pagination controls if paginate_by is used -->
+    {% include 'components/pagination.html' %}
+
+
+
+  </div>
+{% endblock %}

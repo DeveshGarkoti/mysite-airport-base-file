@@ -1,0 +1,28 @@
+{% extends 'base_layout.html' %}
+
+
+{% block title %}
+  <title>Categories</title>
+  <!-- Schema Markup for the faq -->
+  <meta name="description" content="Categories" />
+  <meta name="keyword" content="Categories" />
+
+  <meta name="robots" content="index, follow" />
+{% endblock %}
+
+{% block content %}
+  <div class="col-lg-8 mb-5 mb-lg-0">
+    
+    <div class="aside-card">
+      <h3 class="headline headline-2 aside-title"><a href="{% url 'category-list' %}"><span class="span">Categories</span></a></h3>
+      <div class="feature-list">
+        {% for card in categories %}
+          <span>
+            <a href="{% url 'post_by_category' card.slug %}" class="btn btn-primary">{{ card.title }}</a>
+    
+          </span>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

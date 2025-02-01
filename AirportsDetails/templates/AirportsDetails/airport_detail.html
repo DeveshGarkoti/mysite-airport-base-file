@@ -1,0 +1,106 @@
+{% extends 'base_layout.html' %}
+
+{% block title %}
+  <title>{{ airport.meta_title }}</title>
+  <!-- Schema Markup for the airport -->
+  <meta name="description" content="{{ airport.meta_description }}" />
+  <meta name="keyword" content="{{ airport.meta_keywords }}" />
+
+  <meta property="og:title" content="{{ airport.meta_title }}" />
+  <meta property="og:description" content="{{ airport.meta_description|truncatewords:60|safe }}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="{{ airport.get_absolute_url }}" />
+  <meta property="og:updated_time" content="{{ airport.update_date }}" />
+  <meta property="og:image" content="{{ airport.photo.url }}" />
+
+  <meta name="robots" content="index, follow" />
+
+  {% include 'components/schema_card.html' with card=airport %}
+
+  <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Airport",
+        "iataCode": "{{ airport.iata_code }}",
+        "icaoCode": "{{ airport.icao_code }}",
+        "name": "{{ airport.title }}",
+        "description": "{{ airport.meta_description }}",
+        "image": "{{ airport.photo.url }}",
+        "url": "{{ request.build_absolute_uri }}",
+        "openingHours": "Mo-Su",
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "{{ airport.country.title }}",
+            "addressLocality": "{{ airport.location }}",
+            "addressRegion": "{{ airport.country.iso_alpha2 }}"
+        },
+        "alternateName": [
+          {% for alias in alias_airports %}
+          "{{ alias.title }}"{% if not forloop.last %},{% endif %}
+          {% endfor %}
+        ],
+        "telephone": "{{ airport.contact_info }}",
+        
+      "sameAs": [
+        {% if airport.facebook_url %}"{{ airport.facebook_url }}"{% if airport.twitter_url or airport.linkedin_url or airport.instagram_url or airport.youtube_url %},{% endif %}{% endif %}
+        {% if airport.twitter_url %}"{{ airport.twitter_url }}"{% if airport.linkedin_url or airport.instagram_url or airport.youtube_url %},{% endif %}{% endif %}
+        {% if airport.linkedin_url %}"{{ airport.linkedin_url }}"{% if airport.instagram_url or airport.youtube_url %},{% endif %}{% endif %}
+        {% if airport.instagram_url %}"{{ airport.instagram_url }}"{% if airport.youtube_url %},{% endif %}{% endif %}
+        {% if airport.youtube_url %}"{{ airport.youtube_url }}"{% endif %}
+      ]
+    
+    }
+</script>
+{% endblock %}
+
+{% block content %}
+  <div class="col-12 col-md-8 mb-5 mb-lg-0">
+    <article itemscope itemtype="https://schema.org/BlogPosting" itemid="{{ request.build_absolute_uri }}">
+      {% include 'components/post_card.html' with card=airport %}
+      <!-- card Content Section -->
+      <section id="content" class="card-content" itemprop="description">
+        <p>{{ airline.content|safe }}</p>
+        <!-- -Post Details -->
+
+        {% include 'components/post_details_card.html' with card=airport %}
+
+        {% include 'components/post_sm_details_card.html' with card=airport cards=alias_airports title='Also known as' %}
+        {% include 'components/post_map_card.html' with card=airline %}
+
+        {% include 'components/post_country_details_card.html' with card=airport %}
+
+        {% include 'components/post_country_places.html' with card=airport places=places_to_visit_in_country %}
+
+        {% include 'components/post_facilities.html' with card=airport layout=airport.layout title='airport' %}
+
+        <hr />
+
+        <!-- FAQs -->
+
+        <section>
+          <h2 class="h5 section-title mt-5">Faqs</h2>
+
+          {% include 'components/post_faq_card.html' with card=airport title='airport' %}
+
+          {% include 'components/post_faq_card.html' with card=airport.country title='country' %}
+        </section>
+
+        <!-- Terminals -->
+        {% include 'components/post_terminals.html' with category='terminals' all_url='terminals_by_airport_list' slug=airport.slug card=airport cards=terminals_in_airport %}
+
+        <!-- Offices -->
+        {% include 'components/post_terminals.html' with category='Offices' all_url='offices_by_airport_list' slug=airport.slug card=airport cards=offices_in_airport %}
+      </section>
+    </article>
+
+
+
+
+    {% include "components/comments.html" with post_id=airport.id %}
+
+    
+
+    <!-- Pagination controls if paginate_by is used -->
+    {% include 'components/pagination.html' %}
+  </div>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'base_layout.html' %}
+{% load custom_filters %}
+
+{% block title %}
+  <title>Airlines</title>
+  <!-- Schema Markup for the Airline -->
+  <meta name="description" content="Airlines" />
+  <meta name="keyword" content="Airlines" />
+
+  <meta property="og:title" content="Airlines" />
+  <meta property="og:description" content="Airlines" />
+  <meta property="og:type" content="website" />
+
+  <meta name="robots" content="index, follow" />
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "itemListElement": [
+        {% for card in airlines %}
+        {
+          "@type": "ListItem",
+          "position": {{ forloop.counter }},
+          "name": "{{ card.title }}",
+          "iataCode": "{{ card.iata_code }}",
+          "url": "{{ request.build_absolute_uri }}{{ card.slug }}"
+        }
+        
+        {% if not forloop.last %},{% endif %}
+        {% endfor %}
+      ]
+    }
+    </script>
+{% endblock %}
+
+{% block content %}
+  <div class="col-12 col-md-8 mb-5 mb-lg-0">
+  
+    <h2 class="headline headline-2 section-title"><span class="span">All Airlines</span></h2>
+
+    <p class="section-text">Featured and highly rated articles</p>
+
+    <ul class="feature-list">
+      {% for card in airlines %}
+      <li>
+        {% include 'components/card_sm.html' with card=card %}
+      </li>
+        
+      {% endfor %}
+    </ul>
+
+    <!-- Pagination controls if paginate_by is used -->
+    {% include 'components/pagination.html' %}
+  </div>
+{% endblock %}

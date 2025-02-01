@@ -1,0 +1,291 @@
+{% if cards %}
+<br>
+  <section>
+    <div class="">
+      {% if layout == 'Layout One' %}
+        <div class="card feature-card">
+          <h2 class="headline headline-3">{{ card.iata_code }} Airport, Also Called</h2>
+
+          <div class="">
+            {% for card in cards %}
+              <div class="rounded card-gradient-hover pl-4 pt-1">
+                <div class="card-title" title=" {{ card }}">
+                  <strong>{{ card }}</strong>
+                </div>
+              </div>
+              <br />
+            {% endfor %}
+          </div>
+        </div>
+      {% elif layout == 'Layout Two' %}
+        <div class="card feature-card">
+          <h2 class="headline headline-3">{{ card.iata_code }} Airport, Known As</h2>
+
+          <div class="">
+            <ul>
+              {% for card in cards %}
+                <li title="{{ card }}">{{ card }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      {% elif layout == 'Layout Heading' %}
+        <div class="card feature-card">
+          <h2 class="headline headline-3">{{ card.iata_code }} Airport, Often Called</h2>
+
+          <div class="">
+            <ol>
+              {% for card in cards %}
+                <li title="{{ card }}">{{ card }}</li>
+              {% endfor %}
+            </ol>
+          </div>
+        </div>
+      {% elif layout == 'Layout Images' %}
+        <div class="card feature-card">
+          <h2 class="headline headline-3">{{ card.iata_code }} Airport, Sometimes Known As</h2>
+
+          <div class="">
+            {% for card in cards %}
+              <div class="rounded card-gradient-hover pl-4 pt-1">
+                <div class="card-title" title=" {{ card }}">
+                  <strong>{{ card }}</strong>
+                </div>
+              </div>
+              <br />
+            {% endfor %}
+          </div>
+        </div>
+      {% elif layout == 'Layout Reverse' %}
+        <div class="card feature-card">
+          <h2 class="headline headline-3">Alternate Names for the Airport {{ card.iata_code }}</h2>
+
+          <div class="">
+            {% for card in cards %}
+              <div class="rounded card-gradient-hover pl-4 pt-1">
+                <div class="card-title" title=" {{ card }}">
+                  <strong>{{ card }}</strong>
+                </div>
+              </div>
+              <br />
+            {% endfor %}
+          </div>
+        </div>
+      {% elif layout == 'Layout First 4' %}
+        <div class="card feature-card">
+          <h2 class="headline headline-3">Commonly Known Names of the {{ card.iata_code }} Airport</h2>
+
+          <div class="">
+            {% for card in cards %}
+              <div class="rounded card-gradient-hover pl-4 pt-1">
+                <div class="card-title" title=" {{ card }}">
+                  <strong>{{ card }}</strong>
+                </div>
+              </div>
+              <br />
+            {% endfor %}
+          </div>
+        </div>
+      {% elif layout == 'Layout First 5' %}
+        <div class="card feature-card">
+          <h2 class="headline headline-3">Other Known Names for the {{ card.iata_code }} Airport</h2>
+
+          <div class="">
+            {% for card in cards %}
+              <div class="rounded card-gradient-hover pl-4 pt-1">
+                <div class="card-title" title=" {{ card }}">
+                  <strong>{{ card }}</strong>
+                </div>
+              </div>
+              <br />
+            {% endfor %}
+          </div>
+        </div>
+      {% elif layout == 'Layout First 6' %}
+        <div class="card feature-card">
+          <h2 class="headline headline-3">Alternative Titles of the {{ card.iata_code }} Airport</h2>
+
+          <div class="">
+            {% for card in cards %}
+              <div class="rounded card-gradient-hover pl-4 pt-1">
+                <div class="card-title" title=" {{ card }}">
+                  <strong>{{ card }}</strong>
+                </div>
+              </div>
+              <br />
+            {% endfor %}
+          </div>
+        </div>
+      {% elif layout == 'Layout First 8' %}
+        <div class="card feature-card">
+          <h2 class="headline headline-3 ">{{ card.title }}, Frequently Called</h2>
+
+          <div class="">
+            {% for card in cards %}
+              <div class="rounded card-gradient-hover pl-4 pt-1">
+                <div class="card-title" title=" {{ card }}">
+                  <strong>{{ card }}</strong>
+                </div>
+              </div>
+              <br />
+            {% endfor %}
+          </div>
+        </div>
+      {% elif layout == 'Layout From 2 To 6' %}
+        <div class="card feature-card">
+          <h2 class="headline headline-3">{{ card.title }}, Frequently Called</h2>
+
+          <div class="">
+            {% for card in cards %}
+              <div class="rounded card-gradient-hover pl-4 pt-1">
+                <div class="card-title" title=" {{ card }}">
+                  <strong>{{ card }}</strong>
+                </div>
+              </div>
+              <br />
+            {% endfor %}
+          </div>
+        </div>
+      {% elif layout == 'Layout From 3 To 7' %}
+        <div class="card feature-card">
+          <h2 class="headline headline-3">{{ card.title }}, Popularly Referred to As</h2>
+
+          <div class="">
+            {% for card in cards %}
+              <div class="rounded card-gradient-hover pl-4 pt-1">
+                <div class="card-title" title=" {{ card }}">
+                  <strong>{{ card }}</strong>
+                </div>
+              </div>
+              <br />
+            {% endfor %}
+          </div>
+        </div>
+      {% elif layout == 'Layout From 4 To 8' %}
+        <div class="card feature-card">
+          <h2 class="headline headline-3">{{ card.title }}, Known As</h2>
+
+          <div class="">
+            {% for card in cards %}
+              <div class="rounded card-gradient-hover pl-4 pt-1">
+                <div class="card-title" title=" {{ card }}">
+                  <strong>{{ card }}</strong>
+                </div>
+              </div>
+              <br />
+            {% endfor %}
+          </div>
+        </div>
+      {% elif layout == 'Layout Last 3' %}
+        <div class="card feature-card">
+          <h2 class="headline headline-3">{{ card.title }}, Also Nicknamed</h2>
+
+          <div class="">
+            {% for card in cards %}
+              <div class="rounded card-gradient-hover pl-4 pt-1">
+                <div class="card-title" title=" {{ card }}">
+                  <strong>{{ card }}</strong>
+                </div>
+              </div>
+              <br />
+            {% endfor %}
+          </div>
+        </div>
+      {% elif layout == 'Layout Last 4' %}
+        <div class="card feature-card">
+          <h2 class="headline headline-3">The {{ card.title }}’s Other Known Names</h2>
+
+          <div class="">
+            {% for card in cards %}
+              <div class="rounded card-gradient-hover pl-4 pt-1">
+                <div class="card-title" title=" {{ card }}">
+                  <strong>{{ card }}</strong>
+                </div>
+              </div>
+              <br />
+            {% endfor %}
+          </div>
+        </div>
+      {% elif layout == 'Layout Last 5' %}
+        <div class="card feature-card">
+          <h2 class="headline headline-3">Also Called by Some: {{ card.title }}</h2>
+
+          <div class="">
+            {% for card in cards %}
+              <div class="rounded card-gradient-hover pl-4 pt-1">
+                <div class="card-title" title=" {{ card }}">
+                  <strong>{{ card }}</strong>
+                </div>
+              </div>
+              <br />
+            {% endfor %}
+          </div>
+        </div>
+      {% elif layout == 'Layout Leave 1' %}
+        <div class="card feature-card">
+          <h2 class="headline headline-3">The {{ card.title }}, Alternatively Known As</h2>
+
+          <div class="">
+            {% for card in cards %}
+              <div class="rounded card-gradient-hover pl-4 pt-1">
+                <div class="card-title" title=" {{ card }}">
+                  <strong>{{ card }}</strong>
+                </div>
+              </div>
+              <br />
+            {% endfor %}
+          </div>
+        </div>
+      {% elif layout == 'Layout Leave 2' %}
+        <div class="card feature-card">
+          <h2 class="headline headline-3">The {{ card.title }}, Called Also</h2>
+
+          <div class="">
+            {% for card in cards %}
+              <div class="rounded card-gradient-hover pl-4 pt-1">
+                <div class="card-title" title=" {{ card }}">
+                  <strong>{{ card }}</strong>
+                </div>
+              </div>
+              <br />
+            {% endfor %}
+          </div>
+        </div>
+      {% elif layout == 'Layout Leave 3' %}
+        <div class="card feature-card">
+          <h2 class="headline headline-3">{{ card.title }}’s Other Names</h2>
+
+          <div class="">
+            {% for card in cards %}
+              <div class="rounded card-gradient-hover pl-4 pt-1">
+                <div class="card-title" title=" {{ card }}">
+                  <strong>{{ card }}</strong>
+                </div>
+              </div>
+              <br />
+            {% endfor %}
+          </div>
+        </div>
+      {% elif layout == 'Layout Leave 4' %}
+        <div class="card feature-card">
+          <h2 class="headline headline-3">{{ card.title }}’s Other Names</h2>
+
+          <div class="">
+            {% for card in cards %}
+              <div class="rounded card-gradient-hover pl-4 pt-1">
+                <div class="card-title" title=" {{ card }}">
+                  <strong>{{ card }}</strong>
+                </div>
+              </div>
+              <br />
+            {% endfor %}
+          </div>
+        </div>
+      {% else %}
+
+      {% endif %}
+    </div>
+  </section>
+{% else %}
+
+{% endif %}

@@ -1,0 +1,34 @@
+{% load static %}
+   
+<div class="card feature-card">
+  {% include 'components/image_sm.html' with photo=card.photo alt=card.title %}
+
+  <div class="card-content">
+    
+    <div class="card-wrapper">
+      <div class="card-tag">
+        {% for tag in card.tags.all|slice:':3' %}
+          <a href="{% url 'post_by_tag' tag.slug %}" class="span hover-2">#{{ tag.title }}</a>
+        {% endfor %}
+      </div>
+
+      <div class="wrapper">
+        <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+
+        <span class="span">6 mins read</span>
+      </div>
+    </div>
+
+    <h3 class="headline headline-3"><a href="{% url 'post_detail' card.slug %}" class="link hover-2">{{ card.title }}</a></h3>
+    <p class="card-text">{{ card.meta_description|truncatewords:10 }} …</p>
+    <div class="card-wrapper">
+      <div class="profile-card">
+        <div>
+          <p class="card-subtitle">{{ card.publish_date }}</p>
+        </div>
+      </div>
+
+      <a href="{% url 'post_detail' card.slug %}" class="card-btn">Read more</a>
+    </div>
+  </div>
+</div>

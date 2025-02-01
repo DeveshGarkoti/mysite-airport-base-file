@@ -1,0 +1,66 @@
+<!-- -Image -->
+<figure class="card-banner img-holder rounded" style="--width: 800; --height: 450;">
+  <div class="image-track">
+    {% if card.airport.photo %}
+      {% include 'components/image_sm.html' with photo=card.airport.photo alt=card.photo_alt|add:' - '|add:card.airport.photo_alt|add:' - '|add:card.airline.photo_alt %}
+    {% elif card.airline.photo %}
+      {% include 'components/image_sm.html' with photo=card.airline.photo alt=card.airline.photo_alt %}
+    {% elif card.photo %}
+      {% include 'components/image_sm.html' with photo=card.photo alt=card.photo_alt %}
+    {% endif %}
+  </div>
+</figure>
+
+<!-- -Heading -->
+{% if card.tags %}
+<div class="card-wrapper">
+  
+    <div class="card-tag">
+      {% for tag in card.tags.all|slice:':3' %}
+        <a href="{% url 'post_by_tag' tag.slug %}" class="span hover-2"># {{ tag.title }}</a>
+      {% endfor %}
+    </div>
+  
+  <div class="wrapper">
+    
+
+    {% if card.categories %}
+      {% for category in card.categories.all|slice:':3' %}
+      <ion-icon name="folder-outline" aria-hidden="true"></ion-icon>
+        <a href="{% url 'post_by_category' category.slug %}" class="span">{{ category.title }}</a>
+      {% endfor %}
+    {% endif %}
+  </div>
+</div>
+{% endif %}
+<h1 class="headline headline-3 section-title" id="heading" itemprop="name">{{ card.title }}</h1>
+
+<meta itemprop="identifier" content="{{ card.iata_code }}" />
+
+<div class="card-wrapper">
+  <div class="profile-card">
+    {% comment %} <img src="./assets/images/author-1.png" width="48" height="48" loading="lazy" alt="Joseph" class="profile-banner" /> {% endcomment %}
+
+    <div class="wrapper">
+      <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+      <span class="span">{{ card.update_date|date:'F j, Y' }}</span>
+    </div>
+    <div class="wrapper">
+      <ion-icon name="calendar-outline" aria-hidden="true"></ion-icon>
+      <span class="span">{{ card.publish_date|date:'F j, Y' }}</span>
+    </div>
+  </div>
+
+</div>
+<!-- -Post Details -->
+
+<div class="collapse-wrapper rounded card-gradient-hover card feature-card">
+  <a class="d-flex p-2 collapse-head" data-toggle="collapse" href="#toc" role="button"><h2 class="h3">Table of Contents</h2><i class="ti-plus ml-auto"></i></a>
+  <div class="collapse" id="toc">
+    <div class="p-2">
+      <ul></ul>
+    </div>
+    <!-- TOC will be generated here -->
+  </div>
+</div>
+<hr />

@@ -1,0 +1,7 @@
+<div class="card aside-card">
+  <h3 class="headline headline-2 aside-title"><a href="{% url 'tag_list' %}"><span class="span">Tags</span></a></h3>
+
+  {% for card in sidebar_tags %}
+    <a href="{% url 'post_by_tag' card.slug %}">#{{ card.title }}</a>,
+  {% endfor %}
+</div>

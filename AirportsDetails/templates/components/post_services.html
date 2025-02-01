@@ -1,0 +1,351 @@
+{% if card.services_available.all %}
+<br>
+  <div class="">
+    {% if layout == 'Layout One' %}
+      <h2 class="headline headline-3">These services are available at {{ card.title }}.</h2>
+      {% for service in card.services_available.all %}
+        <figure class="post-slider mb-4">
+          {% if service.photo %}
+            <div class="image-container">
+              {% include 'components/image_sm.html' with photo=service.photo alt=service.photo_alt|add:" "|add:card.title  %}
+              
+            </div>
+          {% endif %}
+        </figure>
+        <h3 class="h5" itemprop="name">{{ card.title }} has {{ service.title }}</h3>
+
+        <section class="card-content" itemprop="description">
+          <p>{{ service.content|safe }}</p>
+        </section>
+      {% empty %}
+        <li>No service to Visit associated with {{ card.title }}.</li>
+      {% endfor %}
+    {% elif layout == 'Layout Two' %}
+      <h2 class="headline headline-3">{{ card.title }} offers these services.</h2>
+      {% for service in card.services_available.all|slice:'::-1' %}
+        <ul>
+          <li>{{ service.title }}</li>
+        </ul>
+      {% empty %}
+        <li>No service to Visit associated with {{ card.title }}.</li>
+      {% endfor %}
+    {% elif layout == 'Layout Heading' %}
+      <h2 class="headline headline-3">The following services are provided by {{ card.title }}.</h2>
+      {% for service in card.services_available.all|slice:'::-1' %}
+        <ul>
+          <li>{{ service.title }}</li>
+        </ul>
+      {% empty %}
+        <li>No service to Visit associated with {{ card.title }}.</li>
+      {% endfor %}
+    {% elif layout == 'Layout Images' %}
+      <h2 class="headline headline-3">At {{ card.title }} you’ll find these services.</h2>
+      <div class="row">
+        {% for service in card.services_available.all|slice:'::-1' %}
+          <div class="col-md-6">
+            <figure class="post-slider mb-4">
+              {% if service.photo %}
+                <div class="image-container">
+                  {% include 'components/image_sm.html' with photo=service.photo alt=service.photo_alt|add:" "|add:card.title  %}
+                </div>
+              {% endif %}
+            </figure>
+            <p class="h6" itemprop="name">{{ service.title }} service at {{ card.title }}</p>
+          </div>
+        {% empty %}
+          <li>No service to Visit associated with {{ card.title }}.</li>
+        {% endfor %}
+      </div>
+    {% elif layout == 'Layout Reverse' %}
+      <h2 class="headline headline-3">{{ card.title }} provides these services for passengers.</h2>
+      {% for service in card.services_available.all|slice:':5'|slice:'::-1' %}
+        <figure class="post-slider mb-4">
+          {% if service.photo %}
+            <div class="image-container">
+              {% include 'components/image_sm.html' with photo=service.photo alt=service.photo_alt|add:" "|add:card.title  %}
+            </div>
+          {% endif %}
+        </figure>
+        <h3 class="h5" itemprop="name">{{ service.title }} located at {{ card.title }}</h3>
+
+        <section class="card-content" itemprop="description">
+          <p>{{ service.content|safe }}</p>
+        </section>
+      {% empty %}
+        <li>No service to Visit associated with {{ card.title }}.</li>
+      {% endfor %}
+    {% elif layout == 'Layout First 4' %}
+      <h2 class="headline headline-3">Passengers can enjoy these services at {{ card.title }}.</h2>
+      {% for service in card.services_available.all|slice:':4' %}
+        <figure class="post-slider mb-4">
+          {% if service.photo %}
+            <div class="image-container">
+              {% include 'components/image_sm.html' with photo=service.photo alt=service.photo_alt|add:" "|add:card.title  %}
+            </div>
+          {% endif %}
+        </figure>
+        <h3 class="h5" itemprop="name">{{ service.title }} at the {{ card.title }}</h3>
+
+        <section class="card-content" itemprop="description">
+          <p>{{ service.content|safe }}</p>
+        </section>
+      {% empty %}
+        <li>No service to Visit associated with {{ card.title }}.</li>
+      {% endfor %}
+    {% elif layout == 'Layout First 5' %}
+      <h2 class="headline headline-3">{{ card.title }} has these services available for travelers.</h2>
+      {% for service in card.services_available.all|slice:':5' %}
+        <figure class="post-slider mb-4">
+          {% if service.photo %}
+            <div class="image-container">
+              {% include 'components/image_sm.html' with photo=service.photo alt=service.photo_alt|add:" "|add:card.title  %}
+            </div>
+          {% endif %}
+        </figure>
+        <h3 class="h5" itemprop="name">{{ card.title }} and {{ service.title }}</h3>
+
+        <section class="card-content" itemprop="description">
+          <p>{{ service.content|safe }}</p>
+        </section>
+      {% empty %}
+        <li>No service to Visit associated with {{ card.title }}.</li>
+      {% endfor %}
+    {% elif layout == 'Layout First 6' %}
+      <h2 class="headline headline-3">{{ card.title }} includes the following services.</h2>
+      {% for service in card.services_available.all|slice:':6' %}
+        <figure class="post-slider mb-4">
+          {% if service.photo %}
+            <div class="image-container">
+              {% include 'components/image_sm.html' with photo=service.photo alt=service.photo_alt|add:" "|add:card.title  %}
+            </div>
+          {% endif %}
+        </figure>
+        <h3 class="h5" itemprop="name">{{ service.title }} offered in {{ card.title }}</h3>
+
+        <section class="card-content" itemprop="description">
+          <p>{{ service.content|safe }}</p>
+        </section>
+      {% empty %}
+        <li>No service to Visit associated with {{ card.title }}.</li>
+      {% endfor %}
+    {% elif layout == 'Layout First 8' %}
+      <h2 class="headline headline-3">These services are offered to passengers at {{ card.title }}.</h2>
+      {% for service in card.services_available.all|slice:':8' %}
+        <figure class="post-slider mb-4">
+          {% if service.photo %}
+            <div class="image-container">
+              
+              {% include 'components/image_sm.html' with photo=service.photo alt=service.photo_alt|add:" "|add:card.title  %}
+
+            </div>
+          {% endif %}
+        </figure>
+        <h3 class="h5" itemprop="name">{{ service.title }} provided in {{ card.title }}</h3>
+
+        <section class="card-content" itemprop="description">
+          <p>{{ service.content|safe }}</p>
+        </section>
+      {% empty %}
+        <li>No service to Visit associated with {{ card.title }}.</li>
+      {% endfor %}
+    {% elif layout == 'Layout From 2 To 6' %}
+      <h2 class="headline headline-3">Services like these are available through {{ card.title }}.</h2>
+      {% for service in card.services_available.all|slice:'2:6' %}
+        <figure class="post-slider mb-4">
+          {% if service.photo %}
+            <div class="image-container">
+              {% include 'components/image_sm.html' with photo=service.photo alt=service.photo_alt|add:" "|add:card.title  %}
+            </div>
+          {% endif %}
+        </figure>
+        <h3 class="h5" itemprop="name">{{ service.title }} service at the {{ card.title }}</h3>
+
+        <section class="card-content" itemprop="description">
+          <p>{{ service.content|safe }}</p>
+        </section>
+      {% empty %}
+        <li>No service to Visit associated with {{ card.title }}.</li>
+      {% endfor %}
+    {% elif layout == 'Layout From 3 To 7' %}
+      <h2 class="headline headline-3">{{ card.title }} has these services for customer convenience.</h2>
+      {% for service in card.services_available.all|slice:'3:7' %}
+        <figure class="post-slider mb-4">
+          {% if service.photo %}
+            <div class="image-container">
+              {% include 'components/image_sm.html' with photo=service.photo alt=service.photo_alt|add:" "|add:card.title  %}
+            </div>
+          {% endif %}
+        </figure>
+        <h3 class="h5" itemprop="name">{{ card.title }} presenting {{ service.title }}</h3>
+
+        <section class="card-content" itemprop="description">
+          <p>{{ service.content|safe }}</p>
+        </section>
+      {% empty %}
+        <li>No service to Visit associated with {{ card.title }}.</li>
+      {% endfor %}
+    {% elif layout == 'Layout From 4 To 8' %}
+      <h2 class="headline headline-3">You can access these services through {{ card.title }}.</h2>
+      {% for service in card.services_available.all|slice:'4:8' %}
+        <figure class="post-slider mb-4">
+          {% if service.photo %}
+            <div class="image-container">
+              {% include 'components/image_sm.html' with photo=service.photo alt=service.photo_alt|add:" "|add:card.title  %}
+            </div>
+          {% endif %}
+        </figure>
+        <h3 class="h5" itemprop="name">{{ card.title }} and its {{ service.title }}</h3>
+
+        <section class="card-content" itemprop="description">
+          <p>{{ service.content|safe }}</p>
+        </section>
+      {% empty %}
+        <li>No service to Visit associated with {{ card.title }}.</li>
+      {% endfor %}
+    {% elif layout == 'Layout Last 3' %}
+      <h2 class="headline headline-3">{{ card.title }} features these passenger services.</h2>
+      {% for service in card.services_available.all|slice:'6:10' %}
+        <figure class="post-slider mb-4">
+          {% if service.photo %}
+            <div class="image-container">
+              {% include 'components/image_sm.html' with photo=service.photo alt=service.photo_alt|add:" "|add:card.title  %}
+            </div>
+          {% endif %}
+        </figure>
+        <h3 class="h5" itemprop="name">{{ service.title }} linked with {{ card.title }}</h3>
+
+        <section class="card-content" itemprop="description">
+          <p>{{ service.content|safe }}</p>
+        </section>
+      {% empty %}
+        <li>No service to Visit associated with {{ card.title }}.</li>
+      {% endfor %}
+    {% elif layout == 'Layout Last 4' %}
+      <h2 class="headline headline-3">These are the services you’ll find with {{ card.title }}.</h2>
+      {% for service in card.services_available.all|slice:'5:9' %}
+        <figure class="post-slider mb-4">
+          {% if service.photo %}
+            <div class="image-container">
+              {% include 'components/image_sm.html' with photo=service.photo alt=service.photo_alt|add:" "|add:card.title  %}
+            </div>
+          {% endif %}
+        </figure>
+        <h3 class="h5" itemprop="name">{{ service.title }} of the {{ card.title }}</h3>
+
+        <section class="card-content" itemprop="description">
+          <p>{{ service.content|safe }}</p>
+        </section>
+      {% empty %}
+        <li>No service to Visit associated with {{ card.title }}.</li>
+      {% endfor %}
+    {% elif layout == 'Layout Last 5' %}
+      <h2 class="headline headline-3">Here are the services offered by {{ card.title }}.</h2>
+      {% for service in card.services_available.all|slice:'7:11' %}
+        <figure class="post-slider mb-4">
+          {% if service.photo %}
+            <div class="image-container">
+              {% include 'components/image_sm.html' with photo=service.photo alt=service.photo_alt|add:" "|add:card.title  %}
+            </div>
+          {% endif %}
+        </figure>
+        <h3 class="h5" itemprop="name">{{ service.title }} supported by {{ card.title }}</h3>
+
+        <section class="card-content" itemprop="description">
+          <p>{{ service.content|safe }}</p>
+        </section>
+      {% empty %}
+        <li>No service to Visit associated with {{ card.title }}.</li>
+      {% endfor %}
+    {% elif layout == 'Layout Leave 1' %}
+      <h2 class="headline headline-3">{{ card.title }} gives travelers access to these services.</h2>
+      {% for service in card.services_available.all|slice:'0::2' %}
+        <figure class="post-slider mb-4">
+          {% if service.photo %}
+            <div class="image-container">
+              {% include 'components/image_sm.html' with photo=service.photo alt=service.photo_alt|add:" "|add:card.title  %}
+            </div>
+          {% endif %}
+        </figure>
+        <h3 class="h5" itemprop="name">{{ service.title }} associated with {{ card.title }}</h3>
+
+        <section class="card-content" itemprop="description">
+          <p>{{ service.content|safe }}</p>
+        </section>
+      {% empty %}
+        <li>No service to Visit associated with {{ card.title }}.</li>
+      {% endfor %}
+    {% elif layout == 'Layout Leave 2' %}
+      <h2 class="headline headline-3">The following amenities are provided by {{ card.title }}.</h2>
+      {% for service in card.services_available.all|slice:'0::3' %}
+        <figure class="post-slider mb-4">
+          {% if service.photo %}
+            <div class="image-container">
+              {% include 'components/image_sm.html' with photo=service.photo alt=service.photo_alt|add:" "|add:card.title  %}
+            </div>
+          {% endif %}
+        </figure>
+        <h3 class="h5" itemprop="name">{{ service.title }} connected to {{ card.title }}</h3>
+
+        <section class="card-content" itemprop="description">
+          <p>{{ service.content|safe }}</p>
+        </section>
+      {% empty %}
+        <li>No service to Visit associated with {{ card.title }}.</li>
+      {% endfor %}
+    {% elif layout == 'Layout Leave 3' %}
+      <h2 class="headline headline-3">Passengers can use these services at {{ card.title }}.</h2>
+      {% for service in card.services_available.all|slice:'0::4' %}
+        <figure class="post-slider mb-4">
+          {% if service.photo %}
+            <div class="image-container">
+              {% include 'components/image_sm.html' with photo=service.photo alt=service.photo_alt|add:" "|add:card.title  %}
+            </div>
+          {% endif %}
+        </figure>
+        <h3 class="h5" itemprop="name">{{ service.title }} included at {{ card.title }}</h3>
+
+        <section class="card-content" itemprop="description">
+          <p>{{ service.content|safe }}</p>
+        </section>
+      {% empty %}
+        <li>No service to Visit associated with {{ card.title }}.</li>
+      {% endfor %}
+    {% elif layout == 'Layout Leave 4' %}
+      <h2 class="headline headline-3">These services are part of {{ card.title }}' offerings.</h2>
+      {% for service in card.services_available.all|slice:'1::4' %}
+        <figure class="post-slider mb-4">
+          {% if service.photo %}
+            <div class="image-container">
+              {% include 'components/image_sm.html' with photo=service.photo alt=service.photo_alt|add:" "|add:card.title  %}
+            </div>
+          {% endif %}
+        </figure>
+        <h3 class="h5" itemprop="name">{{ service.title }} as part of {{ card.title }}</h3>
+
+        <section class="card-content" itemprop="description">
+          <p>{{ service.content|safe }}</p>
+        </section>
+      {% empty %}
+        <li>No service to Visit associated with {{ card.title }}.</li>
+      {% endfor %}
+    {% else %}
+      <h2 class="headline headline-3">{{ card.title }} provides the following services for guests.</h2>
+      {% for service in card.services_available.all|slice:'2:6' %}
+        <figure class="post-slider mb-4">
+          {% if service.photo %}
+            <div class="image-container">
+              {% include 'components/image_sm.html' with photo=service.photo alt=service.photo_alt|add:" "|add:card.title  %}
+            </div>
+          {% endif %}
+        </figure>
+        <h3 class="h5" itemprop="name">{{ service.title }} - {{ card.title }}</h3>
+
+        <section class="card-content" itemprop="description">
+          <p>{{ service.content|safe }}</p>
+        </section>
+      {% empty %}
+        <li>No service to Visit associated with {{ card.title }}.</li>
+      {% endfor %}
+    {% endif %}
+  </div>
+{% endif %}

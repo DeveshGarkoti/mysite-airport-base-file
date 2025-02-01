@@ -1,0 +1,1563 @@
+<br>
+<div class="">
+  {% if layout == 'Layout One' %}
+    <!-- card Details Section -->
+    <section class="card feature-card">
+      <h2 class="headline headline-3">Information on {{ card.title }}</h2>
+      <div class="">
+        <div class="card-wrapper" title="{{ card.title }}’s IATA Code is {{ card.iata_code }}">
+          <strong>{{ card.title }}’s IATA Code is:</strong> <span itemprop="iataCode">{{ card.iata_code }}</span>
+        </div>
+        <div class="card-wrapper" title="{{ card.title }} ICAO Code">
+          <strong>{{ card.title }}'s ICAO Code is</strong> <span>{{ card.icao_code }}</span>
+        </div>
+        {% if card.headquarters %}
+          <div class="card-wrapper" title="Headquarters of the {{ card.title }}s">
+            <strong>Headquarters of the {{ card.title }}s:</strong> <span itemprop="address">{{ card.headquarters }}</span>
+          </div>
+        {% else %}
+
+        {% endif %}
+
+        <div class="card-wrapper">
+          <strong>Operational Status of {{ card.title }}:</strong> <span>{{ card.get_operational_display }}</span>
+        </div>
+        <div class="card-wrapper">
+          <strong>Region Served by the {{ card.title }}:</strong> <span>{{ card.area_served }}</span>
+        </div>
+      </div>
+    </section>
+
+    <br />
+    <!-- card Contact Details Section -->
+    <section class="card feature-card" itemscope itemtype="https://schema.org/ContactPoint">
+      <h2 class="headline headline-3">Get in touch with {{ card.title }}.</h2>
+      <div class="">
+        <div class="card-wrapper">
+          <strong>{{ card.title }} Location:</strong> <span itemprop="address">{{ card.location }}</span>
+        </div>
+        <div class="card-wrapper">
+          <strong>{{ card.title }} Web Page:</strong> <span><a href="{{ card.website }}" target="_blank" itemprop="url">{{ card.website }}</a></span>
+        </div>
+        <div class="card-wrapper">
+          <strong>{{ card.title }} Contact Info:</strong> <span itemprop="contactType">{{ card.contact_info }}</span>
+        </div>
+      </div>
+    </section>
+
+    <br />
+    <section class="card feature-card">
+      <h3 class="headline headline-3">Follow {{ card.title }} on social channels.</h3>
+
+      <div class="">
+        <ul class="card-wrapper">
+          {% if card.facebook_url %}
+            <li class="list-inline-item post-title" title="{{ card.title }} facebook page">
+              <a href="{{ card.facebook_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-facebook" slot="start"></ion-icon></a>
+            </li>
+          {% endif %}
+          {% if card.twitter_url %}
+            <li class="list-inline-item" title="{{ card.title }} twitter page">
+              <a href="{{ card.twitter_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-twitter"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.linkedin_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.linkedin_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-linkedin"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.instagram_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.instagram_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-instagram"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.youtube_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.youtube_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-youtube"></ion-icon></a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </section>
+  {% elif layout == 'Layout Two' %}
+    <!-- card Details Section -->
+    <section class="card feature-card">
+      <h2 class="headline headline-3">An overview of {{ card.title }}</h2>
+      <div class="">
+        <div class="card-wrapper" title="{{ card.iata_code }} is the IATA Code for {{ card.title }}">
+          <strong><span itemprop="iataCode">{{ card.iata_code }}</span> is the IATA Code for {{ card.title }}:</strong>
+        </div>
+        <div class="card-wrapper" title="{{ card.title }} ICAO Code">
+          <strong>ICAO Code for {{ card.title }}:</strong> <span>{{ card.icao_code }}</span>
+        </div>
+        {% if card.headquarters %}
+          <div class="card-wrapper" title="{{ card.title }}s Corporate Headquarters">
+            <strong>{{ card.title }}s Corporate Headquarters:</strong> <span itemprop="address">{{ card.headquarters }}</span>
+          </div>
+        {% else %}
+
+        {% endif %}
+
+        <div class="card-wrapper">
+          <strong>Operational Status of {{ card.title }}:</strong> <span>{{ card.get_operational_display }}</span>
+        </div>
+        <div class="card-wrapper">
+          <strong>{{ card.title }} Coverage Area:</strong> <span>{{ card.area_served }}</span>
+        </div>
+      </div>
+    </section>
+
+    <br />
+    <!-- card Contact Details Section -->
+    <section class="card feature-card" itemscope itemtype="https://schema.org/ContactPoint">
+      <h2 class="headline headline-3">Reach out to {{ card.title }}.</h2>
+      <div class="">
+        <div class="card-wrapper">
+          <strong>{{ card.title }} Location:</strong> <span itemprop="address">{{ card.location }}</span>
+        </div>
+        <div class="card-wrapper">
+          <strong>{{ card.title }}s Internet Site:</strong> <span><a href="{{ card.website }}" target="_blank" itemprop="url">{{ card.website }}</a></span>
+        </div>
+        <div class="card-wrapper">
+          <strong>{{ card.title }} Contact Info:</strong> <span itemprop="contactType">{{ card.contact_info }}</span>
+        </div>
+      </div>
+    </section>
+
+    <br />
+    <section class="card feature-card">
+      <h3 class="headline headline-3">Stay connected with {{ card.title }} on socials.</h3>
+
+      <div class="">
+        <ul class="card-wrapper">
+          {% if card.facebook_url %}
+            <li class="list-inline-item post-title" title="{{ card.title }} facebook page">
+              <a href="{{ card.facebook_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-facebook" slot="start"></ion-icon></a>
+            </li>
+          {% endif %}
+          {% if card.twitter_url %}
+            <li class="list-inline-item" title="{{ card.title }} twitter page">
+              <a href="{{ card.twitter_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-twitter"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.linkedin_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.linkedin_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-linkedin"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.instagram_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.instagram_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-instagram"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.youtube_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.youtube_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-youtube"></ion-icon></a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </section>
+  {% elif layout == 'Layout Images' %}
+    <!-- card Details Section -->
+    <section class="card feature-card">
+      <h2 class="headline headline-3">Details regarding {{ card.title }}</h2>
+      <div class="">
+        <div class="card-wrapper" title="{{ card.title }}, IATA: {{ card.iata_code }}">
+          <strong>{{ card.title }}, IATA: <span itemprop="iataCode">{{ card.iata_code }}</span>:</strong>
+        </div>
+        <div class="card-wrapper" title="{{ card.title }} ICAO Code">
+          <strong>{{ card.title }}</strong><span>ICAO Identifier: {{ card.icao_code }}</span>
+        </div>
+        {% if card.headquarters %}
+          <div class="card-wrapper" title="Main Headquarters for {{ card.title }}s">
+            <strong>Main Headquarters for {{ card.title }}s:</strong> <span itemprop="address">{{ card.headquarters }}</span>
+          </div>
+        {% else %}
+
+        {% endif %}
+
+        <div class="card-wrapper">
+          <strong>Operational Status of {{ card.title }}:</strong> <span>{{ card.get_operational_display }}</span>
+        </div>
+        <div class="card-wrapper">
+          <strong>Area Covered by {{ card.title }}:</strong> <span>{{ card.area_served }}</span>
+        </div>
+      </div>
+    </section>
+
+    <br />
+    <!-- card Contact Details Section -->
+    <section class="card feature-card" itemscope itemtype="https://schema.org/ContactPoint">
+      <h2 class="headline headline-3">{{ card.title }} contact information.</h2>
+      <div class="">
+        <div class="card-wrapper">
+          <strong>{{ card.title }} Location:</strong> <span itemprop="address">{{ card.location }}</span>
+        </div>
+        <div class="card-wrapper">
+          <strong>{{ card.title }}s Home Page:</strong> <span><a href="{{ card.website }}" target="_blank" itemprop="url">{{ card.website }}</a></span>
+        </div>
+        <div class="card-wrapper">
+          <strong>{{ card.title }} Contact Info:</strong> <span itemprop="contactType">{{ card.contact_info }}</span>
+        </div>
+      </div>
+    </section>
+
+    <br />
+    <section class="card feature-card">
+      <h3 class="headline headline-3">Social connections for {{ card.title }}.</h3>
+
+      <div class="">
+        <ul class="card-wrapper">
+          {% if card.facebook_url %}
+            <li class="list-inline-item post-title" title="{{ card.title }} facebook page">
+              <a href="{{ card.facebook_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-facebook" slot="start"></ion-icon></a>
+            </li>
+          {% endif %}
+          {% if card.twitter_url %}
+            <li class="list-inline-item" title="{{ card.title }} twitter page">
+              <a href="{{ card.twitter_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-twitter"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.linkedin_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.linkedin_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-linkedin"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.instagram_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.instagram_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-instagram"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.youtube_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.youtube_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-youtube"></ion-icon></a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </section>
+  {% elif layout == 'Layout Reverse' %}
+    <!-- card Details Section -->
+    <section class="card feature-card">
+      <h2 class="headline headline-3">Introduction to {{ card.title }}</h2>
+      <div class="">
+        <div class="card-wrapper" title="{{ card.title }} IATA Code: {{ card.iata_code }}">
+          <strong>{{ card.title }} IATA Code: <span itemprop="iataCode">{{ card.iata_code }}</span></strong>
+        </div>
+        <div class="card-wrapper" title="{{ card.title }} ICAO Code">
+          <span>{{ card.icao_code }} is the ICAO designation for</span> <strong>{{ card.title }}</strong>
+        </div>
+        {% if card.headquarters %}
+          <div class="card-wrapper" title="Headquarters Location for {{ card.title }}s">
+            <strong>Headquarters Location for {{ card.title }}s:</strong> <span itemprop="address">{{ card.headquarters }}</span>
+          </div>
+        {% else %}
+
+        {% endif %}
+
+        <div class="card-wrapper">
+          <strong>Operational Status of {{ card.title }}:</strong> <span>{{ card.get_operational_display }}</span>
+        </div>
+        <div class="card-wrapper">
+          <strong>{{ card.title }}'s Service Region:</strong> <span>{{ card.area_served }}</span>
+        </div>
+      </div>
+    </section>
+
+    <br />
+    <!-- card Contact Details Section -->
+    <section class="card feature-card" itemscope itemtype="https://schema.org/ContactPoint">
+      <h2 class="headline headline-3">{{ card.title }} communication channels.</h2>
+      <div class="">
+        <div class="card-wrapper">
+          <strong>{{ card.title }} Location:</strong> <span itemprop="address">{{ card.location }}</span>
+        </div>
+        <div class="card-wrapper">
+          <strong>{{ card.title }} Official Website:</strong> <span><a href="{{ card.website }}" target="_blank" itemprop="url">{{ card.website }}</a></span>
+        </div>
+        <div class="card-wrapper">
+          <strong>{{ card.title }} Contact Info:</strong> <span itemprop="contactType">{{ card.contact_info }}</span>
+        </div>
+      </div>
+    </section>
+
+    <br />
+    <section class="card feature-card">
+      <h3 class="headline headline-3">{{ card.title }}’s social media platforms.</h3>
+
+      <div class="">
+        <ul class="card-wrapper">
+          {% if card.facebook_url %}
+            <li class="list-inline-item post-title" title="{{ card.title }} facebook page">
+              <a href="{{ card.facebook_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-facebook" slot="start"></ion-icon></a>
+            </li>
+          {% endif %}
+          {% if card.twitter_url %}
+            <li class="list-inline-item" title="{{ card.title }} twitter page">
+              <a href="{{ card.twitter_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-twitter"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.linkedin_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.linkedin_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-linkedin"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.instagram_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.instagram_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-instagram"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.youtube_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.youtube_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-youtube"></ion-icon></a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </section>
+  {% elif layout == 'Layout First 4' %}
+    <!-- card Details Section -->
+    <section class="card feature-card">
+      <h2 class="headline headline-3">Facts about {{ card.title }}</h2>
+      <div class="">
+        <div class="card-wrapper" title="{{ card.title }} (IATA Code: {{ card.iata_code }})">
+          <strong>{{ card.title }} (IATA Code:</strong> <span itemprop="iataCode">{{ card.iata_code }})</span>
+        </div>
+        <div class="card-wrapper" title="{{ card.title }} ICAO Code">
+          <strong>ICAO Code associated with {{ card.title }}</strong> <span>{{ card.icao_code }}</span>
+        </div>
+        {% if card.headquarters %}
+          <div class="card-wrapper" title="{{ card.title }}s' Corporate Headquarters">
+            <strong>{{ card.title }}s' Corporate Headquarters:</strong> <span itemprop="address">{{ card.headquarters }}</span>
+          </div>
+        {% else %}
+
+        {% endif %}
+
+        <div class="card-wrapper">
+          <strong>Operational Status of {{ card.title }}:</strong> <span>{{ card.get_operational_display }}</span>
+        </div>
+        <div class="card-wrapper">
+          <strong>{{ card.title }}'s Operational Area:</strong> <span>{{ card.area_served }}</span>
+        </div>
+      </div>
+    </section>
+
+    <br />
+    <!-- card Contact Details Section -->
+    <section class="card feature-card" itemscope itemtype="https://schema.org/ContactPoint">
+      <h2 class="headline headline-3">Contact details for {{ card.title }}.</h2>
+      <div class="">
+        <div class="card-wrapper">
+          <strong>{{ card.title }} Location:</strong> <span itemprop="address">{{ card.location }}</span>
+        </div>
+        <div class="card-wrapper">
+          <strong>Website for {{ card.title }}s:</strong> <span><a href="{{ card.website }}" target="_blank" itemprop="url">{{ card.website }}</a></span>
+        </div>
+        <div class="card-wrapper">
+          <strong>{{ card.title }} Contact Info:</strong> <span itemprop="contactType">{{ card.contact_info }}</span>
+        </div>
+      </div>
+    </section>
+
+    <br />
+    <section class="card feature-card">
+      <h3 class="headline headline-3">Follow {{ card.title }} on various socials.</h3>
+
+      <div class="">
+        <ul class="card-wrapper">
+          {% if card.facebook_url %}
+            <li class="list-inline-item post-title" title="{{ card.title }} facebook page">
+              <a href="{{ card.facebook_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-facebook" slot="start"></ion-icon></a>
+            </li>
+          {% endif %}
+          {% if card.twitter_url %}
+            <li class="list-inline-item" title="{{ card.title }} twitter page">
+              <a href="{{ card.twitter_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-twitter"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.linkedin_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.linkedin_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-linkedin"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.instagram_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.instagram_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-instagram"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.youtube_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.youtube_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-youtube"></ion-icon></a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </section>
+  {% elif layout == 'Layout First 5' %}
+    <!-- card Details Section -->
+    <section class="card feature-card">
+      <h2 class="headline headline-3">Insights into {{ card.title }}</h2>
+      <div class="">
+        <div class="card-wrapper" title="The IATA Code for {{ card.title }} is {{ card.iata_code }}">
+          <strong>The IATA Code for {{ card.title }} is <span itemprop="iataCode">{{ card.iata_code }}</span></strong>
+        </div>
+        <div class="card-wrapper" title="{{ card.title }} ICAO Code">
+          The ICAO Code for <strong>{{ card.title }}</strong> <span>is {{ card.icao_code }}</span>
+        </div>
+        {% if card.headquarters %}
+          <div class="card-wrapper" title="{{ card.title }}s Management Headquarters">
+            <strong>{{ card.title }}s Management Headquarters:</strong> <span itemprop="address">{{ card.headquarters }}</span>
+          </div>
+        {% else %}
+
+        {% endif %}
+
+        <div class="card-wrapper">
+          <strong>Operational Status of {{ card.title }}:</strong> <span>{{ card.get_operational_display }}</span>
+        </div>
+        <div class="card-wrapper">
+          <strong>{{ card.title }}'s Coverage Zone:</strong> <span>{{ card.area_served }}</span>
+        </div>
+      </div>
+    </section>
+
+    <br />
+    <!-- card Contact Details Section -->
+    <section class="card feature-card" itemscope itemtype="https://schema.org/ContactPoint">
+      <h2 class="headline headline-3">Contacting {{ card.title }}.</h2>
+      <div class="">
+        <div class="card-wrapper">
+          <strong>{{ card.title }} Location:</strong> <span itemprop="address">{{ card.location }}</span>
+        </div>
+        <div class="card-wrapper">
+          <strong>{{ card.title }}s Web Domain:</strong> <span><a href="{{ card.website }}" target="_blank" itemprop="url">{{ card.website }}</a></span>
+        </div>
+        <div class="card-wrapper">
+          <strong>{{ card.title }} Contact Info:</strong> <span itemprop="contactType">{{ card.contact_info }}</span>
+        </div>
+      </div>
+    </section>
+
+    <br />
+    <section class="card feature-card">
+      <h3 class="headline headline-3">Socials associated with {{ card.title }}.</h3>
+
+      <div class="">
+        <ul class="card-wrapper">
+          {% if card.facebook_url %}
+            <li class="list-inline-item post-title" title="{{ card.title }} facebook page">
+              <a href="{{ card.facebook_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-facebook" slot="start"></ion-icon></a>
+            </li>
+          {% endif %}
+          {% if card.twitter_url %}
+            <li class="list-inline-item" title="{{ card.title }} twitter page">
+              <a href="{{ card.twitter_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-twitter"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.linkedin_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.linkedin_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-linkedin"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.instagram_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.instagram_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-instagram"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.youtube_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.youtube_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-youtube"></ion-icon></a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </section>
+  {% elif layout == 'Layout First 6' %}
+    <!-- card Details Section -->
+    <section class="card feature-card">
+      <h2 class="headline headline-3">{{ card.title }}: An overview</h2>
+      <div class="">
+        <div class="card-wrapper" title="{{ card.title }}, known by IATA Code {{ card.iata_code }}">
+          <strong>{{ card.title }}, known by IATA Code <span itemprop="iataCode">{{ card.iata_code }}</span></strong>
+        </div>
+        <div class="card-wrapper" title="{{ card.title }} ICAO Code">
+          <strong>{{ card.title }} (ICAO Code:</strong><span>{{ card.icao_code }})</span>
+        </div>
+        {% if card.headquarters %}
+          <div class="card-wrapper" title="{{ card.title }}s Operational Headquarters">
+            <strong>{{ card.title }}s Operational Headquarters:</strong> <span itemprop="address">{{ card.headquarters }}</span>
+          </div>
+        {% else %}
+
+        {% endif %}
+
+        <div class="card-wrapper">
+          <strong>Operational Status of {{ card.title }}:</strong> <span>{{ card.get_operational_display }}</span>
+        </div>
+        <div class="card-wrapper">
+          <strong>Area Served by the {{ card.title }}:</strong> <span>{{ card.area_served }}</span>
+        </div>
+      </div>
+    </section>
+
+    <br />
+    <!-- card Contact Details Section -->
+    <section class="card feature-card" itemscope itemtype="https://schema.org/ContactPoint">
+      <h2 class="headline headline-3">Reach {{ card.title }}.</h2>
+      <div class="">
+        <div class="card-wrapper">
+          <strong>{{ card.title }} Location:</strong> <span itemprop="address">{{ card.location }}</span>
+        </div>
+        <div class="card-wrapper">
+          <strong>{{ card.title }}s Online Homepage:</strong> <span><a href="{{ card.website }}" target="_blank" itemprop="url">{{ card.website }}</a></span>
+        </div>
+        <div class="card-wrapper">
+          <strong>{{ card.title }} Contact Info:</strong> <span itemprop="contactType">{{ card.contact_info }}</span>
+        </div>
+      </div>
+    </section>
+
+    <br />
+    <section class="card feature-card">
+      <h3 class="headline headline-3">{{ card.title }}’s official social media pages.</h3>
+
+      <div class="">
+        <ul class="card-wrapper">
+          {% if card.facebook_url %}
+            <li class="list-inline-item post-title" title="{{ card.title }} facebook page">
+              <a href="{{ card.facebook_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-facebook" slot="start"></ion-icon></a>
+            </li>
+          {% endif %}
+          {% if card.twitter_url %}
+            <li class="list-inline-item" title="{{ card.title }} twitter page">
+              <a href="{{ card.twitter_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-twitter"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.linkedin_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.linkedin_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-linkedin"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.instagram_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.instagram_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-instagram"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.youtube_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.youtube_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-youtube"></ion-icon></a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </section>
+  {% elif layout == 'Layout First 8' %}
+    <!-- card Details Section -->
+    <section class="card feature-card">
+      <h2 class="headline headline-3">Background on {{ card.title }}</h2>
+      <div class="">
+        <div class="card-wrapper" title="{{ card.iata_code }} is the code for {{ card.title }}">
+          <span itemprop="iataCode">{{ card.iata_code }}</span> <strong>is the code for {{ card.title }}:</strong>
+        </div>
+        <div class="card-wrapper" title="{{ card.title }} ICAO Code">
+          <strong>ICAO Designation for {{ card.title }}:</strong> <span>{{ card.icao_code }}</span>
+        </div>
+        {% if card.headquarters %}
+          <div class="card-wrapper" title="{{ card.title }}s Leadership Headquarters">
+            <strong>{{ card.title }}s Leadership Headquarters:</strong> <span itemprop="address">{{ card.headquarters }}</span>
+          </div>
+        {% else %}
+
+        {% endif %}
+
+        <div class="card-wrapper">
+          <strong>Operational Status of {{ card.title }}:</strong> <span>{{ card.get_operational_display }}</span>
+        </div>
+        <div class="card-wrapper">
+          <strong>{{ card.title }} Service Locations:</strong> <span>{{ card.area_served }}</span>
+        </div>
+      </div>
+    </section>
+
+    <br />
+    <!-- card Contact Details Section -->
+    <section class="card feature-card" itemscope itemtype="https://schema.org/ContactPoint">
+      <h2 class="headline headline-3">Ways to contact {{ card.title }}.</h2>
+      <div class="">
+        <div class="card-wrapper">
+          <strong>{{ card.title }} Location:</strong> <span itemprop="address">{{ card.location }}</span>
+        </div>
+        <div class="card-wrapper">
+          <strong>{{ card.title }} Web Domain:</strong> <span><a href="{{ card.website }}" target="_blank" itemprop="url">{{ card.website }}</a></span>
+        </div>
+        <div class="card-wrapper">
+          <strong>{{ card.title }} Contact Info:</strong> <span itemprop="contactType">{{ card.contact_info }}</span>
+        </div>
+      </div>
+    </section>
+
+    <br />
+    <section class="card feature-card">
+      <h3 class="headline headline-3">Social media details for {{ card.title }}.</h3>
+
+      <div class="">
+        <ul class="card-wrapper">
+          {% if card.facebook_url %}
+            <li class="list-inline-item post-title" title="{{ card.title }} facebook page">
+              <a href="{{ card.facebook_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-facebook" slot="start"></ion-icon></a>
+            </li>
+          {% endif %}
+          {% if card.twitter_url %}
+            <li class="list-inline-item" title="{{ card.title }} twitter page">
+              <a href="{{ card.twitter_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-twitter"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.linkedin_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.linkedin_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-linkedin"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.instagram_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.instagram_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-instagram"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.youtube_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.youtube_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-youtube"></ion-icon></a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </section>
+  {% elif layout == 'Layout From 2 To 6' %}
+    <!-- card Details Section -->
+    <section class="card feature-card">
+      <h2 class="headline headline-3">{{ card.title }} in brief</h2>
+      <div class="">
+        <div class="card-wrapper" title="{{ card.title }}’s IATA identifier: {{ card.iata_code }}">
+          <strong>{{ card.title }}’s IATA identifier: <span itemprop="iataCode">{{ card.iata_code }}</span></strong>
+        </div>
+        <div class="card-wrapper" title="{{ card.title }} ICAO Code">
+          <strong>{{ card.title }} ICAO Code:</strong> <span>{{ card.icao_code }}</span>
+        </div>
+        {% if card.headquarters %}
+          <div class="card-wrapper" title="{{ card.title }}s Headquarter Facility">
+            <strong>{{ card.title }}s Headquarter Facility:</strong> <span itemprop="address">{{ card.headquarters }}</span>
+          </div>
+        {% else %}
+
+        {% endif %}
+
+        <div class="card-wrapper">
+          <strong>Operational Status of {{ card.title }}:</strong> <span>{{ card.get_operational_display }}</span>
+        </div>
+        <div class="card-wrapper">
+          <strong>Areas Connected by the {{ card.title }}:</strong> <span>{{ card.area_served }}</span>
+        </div>
+      </div>
+    </section>
+
+    <br />
+    <!-- card Contact Details Section -->
+    <section class="card feature-card" itemscope itemtype="https://schema.org/ContactPoint">
+      <h2 class="headline headline-3">Contact options for {{ card.title }}.</h2>
+      <div class="">
+        <div class="card-wrapper">
+          <strong>{{ card.title }} Location:</strong> <span itemprop="address">{{ card.location }}</span>
+        </div>
+        <div class="card-wrapper">
+          <strong>{{ card.title }}s Online Webpage:</strong> <span><a href="{{ card.website }}" target="_blank" itemprop="url">{{ card.website }}</a></span>
+        </div>
+        <div class="card-wrapper">
+          <strong>{{ card.title }} Contact Info:</strong> <span itemprop="contactType">{{ card.contact_info }}</span>
+        </div>
+      </div>
+    </section>
+
+    <br />
+    <section class="card feature-card">
+      <h3 class="headline headline-3">{{ card.title }} social media information.</h3>
+
+      <div class="">
+        <ul class="card-wrapper">
+          {% if card.facebook_url %}
+            <li class="list-inline-item post-title" title="{{ card.title }} facebook page">
+              <a href="{{ card.facebook_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-facebook" slot="start"></ion-icon></a>
+            </li>
+          {% endif %}
+          {% if card.twitter_url %}
+            <li class="list-inline-item" title="{{ card.title }} twitter page">
+              <a href="{{ card.twitter_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-twitter"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.linkedin_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.linkedin_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-linkedin"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.instagram_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.instagram_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-instagram"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.youtube_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.youtube_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-youtube"></ion-icon></a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </section>
+  {% elif layout == 'Layout From 3 To 7' %}
+    <!-- card Details Section -->
+    <section class="card feature-card">
+      <h2 class="headline headline-3">All about {{ card.title }}</h2>
+      <div class="">
+        <div class="card-wrapper" title="{{ card.title }} (IATA: {{ card.iata_code }})">
+          <strong>{{ card.title }} (IATA: <span itemprop="iataCode">{{ card.iata_code }}</span>)</strong>
+        </div>
+        <div class="card-wrapper" title="{{ card.title }} ICAO Code">
+          <strong>{{ card.title }} ICAO Code:</strong> <span>{{ card.icao_code }}</span>
+        </div>
+        {% if card.headquarters %}
+          <div class="card-wrapper" title="Headquarters of {{ card.title }} Operations">
+            <strong>Headquarters of {{ card.title }} Operations:</strong> <span itemprop="address">{{ card.headquarters }}</span>
+          </div>
+        {% else %}
+
+        {% endif %}
+
+        <div class="card-wrapper">
+          <strong>Operational Status of {{ card.title }}:</strong> <span>{{ card.get_operational_display }}</span>
+        </div>
+        <div class="card-wrapper">
+          <strong>{{ card.title }}'s Service Network:</strong> <span>{{ card.area_served }}</span>
+        </div>
+      </div>
+    </section>
+
+    <br />
+    <!-- card Contact Details Section -->
+    <section class="card feature-card" itemscope itemtype="https://schema.org/ContactPoint">
+      <h2 class="headline headline-3">{{ card.title }} customer service contact.</h2>
+      <div class="">
+        <div class="card-wrapper">
+          <strong>{{ card.title }} Location:</strong> <span itemprop="address">{{ card.location }}</span>
+        </div>
+        <div class="card-wrapper">
+          <strong>{{ card.title }} Official Webpage:</strong> <span><a href="{{ card.website }}" target="_blank" itemprop="url">{{ card.website }}</a></span>
+        </div>
+        <div class="card-wrapper">
+          <strong>{{ card.title }} Contact Info:</strong> <span itemprop="contactType">{{ card.contact_info }}</span>
+        </div>
+      </div>
+    </section>
+
+    <br />
+    <section class="card feature-card">
+      <h3 class="headline headline-3">Follow {{ card.title }} on social platforms.</h3>
+
+      <div class="">
+        <ul class="card-wrapper">
+          {% if card.facebook_url %}
+            <li class="list-inline-item post-title" title="{{ card.title }} facebook page">
+              <a href="{{ card.facebook_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-facebook" slot="start"></ion-icon></a>
+            </li>
+          {% endif %}
+          {% if card.twitter_url %}
+            <li class="list-inline-item" title="{{ card.title }} twitter page">
+              <a href="{{ card.twitter_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-twitter"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.linkedin_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.linkedin_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-linkedin"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.instagram_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.instagram_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-instagram"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.youtube_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.youtube_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-youtube"></ion-icon></a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </section>
+  {% elif layout == 'Layout From 4 To 8' %}
+    <!-- card Details Section -->
+    <section class="card feature-card">
+      <h2 class="headline headline-3">A guide to {{ card.title }}</h2>
+      <div class="">
+        <div class="card-wrapper" title="{{ card.title }} (Code: {{ card.iata_code }})">
+          <strong>{{ card.title }} (Code: <span itemprop="iataCode">{{ card.iata_code }}</span>)</strong>
+        </div>
+        <div class="card-wrapper" title="{{ card.title }} ICAO Code">
+          <strong>{{ card.title }} – ICAO Identifier:</strong><span>{{ card.icao_code }}</span>
+        </div>
+        {% if card.headquarters %}
+          <div class="card-wrapper" title="{{ card.title }}s Governance Headquarters">
+            <strong>{{ card.title }}s Governance Headquarters:</strong> <span itemprop="address">{{ card.headquarters }}</span>
+          </div>
+        {% else %}
+
+        {% endif %}
+
+        <div class="card-wrapper">
+          <strong>Operational Status of {{ card.title }}:</strong> <span>{{ card.get_operational_display }}</span>
+        </div>
+        <div class="card-wrapper">
+          <strong>{{ card.title }}'s Coverage Area:</strong> <span>{{ card.area_served }}</span>
+        </div>
+      </div>
+    </section>
+
+    <br />
+    <!-- card Contact Details Section -->
+    <section class="card feature-card" itemscope itemtype="https://schema.org/ContactPoint">
+      <h2 class="headline headline-3">{{ card.title }} help desk information.</h2>
+      <div class="">
+        <div class="card-wrapper">
+          <strong>{{ card.title }} Location:</strong> <span itemprop="address">{{ card.location }}</span>
+        </div>
+        <div class="card-wrapper">
+          <strong>{{ card.title }}'s Online Website:</strong> <span><a href="{{ card.website }}" target="_blank" itemprop="url">{{ card.website }}</a></span>
+        </div>
+        <div class="card-wrapper">
+          <strong>{{ card.title }} Contact Info:</strong> <span itemprop="contactType">{{ card.contact_info }}</span>
+        </div>
+      </div>
+    </section>
+
+    <br />
+    <section class="card feature-card">
+      <h3 class="headline headline-3">{{ card.title }}’s social media handles.</h3>
+
+      <div class="">
+        <ul class="card-wrapper">
+          {% if card.facebook_url %}
+            <li class="list-inline-item post-title" title="{{ card.title }} facebook page">
+              <a href="{{ card.facebook_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-facebook" slot="start"></ion-icon></a>
+            </li>
+          {% endif %}
+          {% if card.twitter_url %}
+            <li class="list-inline-item" title="{{ card.title }} twitter page">
+              <a href="{{ card.twitter_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-twitter"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.linkedin_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.linkedin_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-linkedin"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.instagram_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.instagram_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-instagram"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.youtube_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.youtube_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-youtube"></ion-icon></a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </section>
+  {% elif layout == 'Layout Last 3' %}
+    <!-- card Details Section -->
+    <section class="card feature-card">
+      <h2 class="headline headline-3">Key details about {{ card.title }}</h2>
+      <div class="">
+        <div class="card-wrapper" title="IATA Code {{ card.iata_code }} for {{ card.title }}">
+          <strong>IATA Code <span itemprop="iataCode">{{ card.iata_code }}</span> for {{ card.title }}:</strong>
+        </div>
+        <div class="card-wrapper" title="{{ card.title }} ICAO Code">
+          <strong>{{ card.title }} ICAO Code:</strong> <span>{{ card.icao_code }}</span>
+        </div>
+        {% if card.headquarters %}
+          <div class="card-wrapper" title="{{ card.title }}s Strategy Headquarters">
+            <strong>{{ card.title }}s Strategy Headquarters:</strong> <span itemprop="address">{{ card.headquarters }}</span>
+          </div>
+        {% else %}
+
+        {% endif %}
+
+        <div class="card-wrapper">
+          <strong>Operational Status of {{ card.title }}:</strong> <span>{{ card.get_operational_display }}</span>
+        </div>
+        <div class="card-wrapper">
+          <strong>{{ card.title }} Access Area:</strong> <span>{{ card.area_served }}</span>
+        </div>
+      </div>
+    </section>
+
+    <br />
+    <!-- card Contact Details Section -->
+    <section class="card feature-card" itemscope itemtype="https://schema.org/ContactPoint">
+      <h2 class="headline headline-3">Get assistance from {{ card.title }}.</h2>
+      <div class="">
+        <div class="card-wrapper">
+          <strong>{{ card.title }} Location:</strong> <span itemprop="address">{{ card.location }}</span>
+        </div>
+        <div class="card-wrapper">
+          <strong>{{ card.title }}s Main Website:</strong> <span><a href="{{ card.website }}" target="_blank" itemprop="url">{{ card.website }}</a></span>
+        </div>
+        <div class="card-wrapper">
+          <strong>{{ card.title }} Contact Info:</strong> <span itemprop="contactType">{{ card.contact_info }}</span>
+        </div>
+      </div>
+    </section>
+
+    <br />
+    <section class="card feature-card">
+      <h3 class="headline headline-3">Connect with {{ card.title }} on socials.</h3>
+
+      <div class="">
+        <ul class="card-wrapper">
+          {% if card.facebook_url %}
+            <li class="list-inline-item post-title" title="{{ card.title }} facebook page">
+              <a href="{{ card.facebook_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-facebook" slot="start"></ion-icon></a>
+            </li>
+          {% endif %}
+          {% if card.twitter_url %}
+            <li class="list-inline-item" title="{{ card.title }} twitter page">
+              <a href="{{ card.twitter_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-twitter"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.linkedin_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.linkedin_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-linkedin"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.instagram_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.instagram_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-instagram"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.youtube_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.youtube_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-youtube"></ion-icon></a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </section>
+  {% elif layout == 'Layout Last 4' %}
+    <!-- card Details Section -->
+    <section class="card feature-card">
+      <h2 class="headline headline-3">{{ card.title }}: Essential information</h2>
+      <div class="">
+        <div class="card-wrapper" title="{{ card.title }} (IATA Code: {{ card.iata_code }})">
+          <strong>{{ card.title }} (IATA Code: )</strong><span itemprop="iataCode">{{ card.iata_code }}</span>
+        </div>
+        <div class="card-wrapper" title="{{ card.title }} ICAO Code">
+          The ICAO identifier for {{ card.title }} is <span>{{ card.icao_code }}</span>
+        </div>
+        {% if card.headquarters %}
+          <div class="card-wrapper" title="{{ card.title }}s Executive Headquarters">
+            <strong>{{ card.title }}s Executive Headquarters:</strong> <span itemprop="address">{{ card.headquarters }}</span>
+          </div>
+        {% else %}
+
+        {% endif %}
+
+        <div class="card-wrapper">
+          <strong>Operational Status of {{ card.title }}:</strong> <span>{{ card.get_operational_display }}</span>
+        </div>
+        <div class="card-wrapper">
+          <strong>Area Served by This {{ card.title }}:</strong> <span>{{ card.area_served }}</span>
+        </div>
+      </div>
+    </section>
+
+    <br />
+    <!-- card Contact Details Section -->
+    <section class="card feature-card" itemscope itemtype="https://schema.org/ContactPoint">
+      <h2 class="headline headline-3">Support line for {{ card.title }}.</h2>
+      <div class="">
+        <div class="card-wrapper">
+          <strong>{{ card.title }} Location:</strong> <span itemprop="address">{{ card.location }}</span>
+        </div>
+        <div class="card-wrapper">
+          <strong>{{ card.title }}s Web Platform:</strong> <span><a href="{{ card.website }}" target="_blank" itemprop="url">{{ card.website }}</a></span>
+        </div>
+        <div class="card-wrapper">
+          <strong>{{ card.title }} Contact Info:</strong> <span itemprop="contactType">{{ card.contact_info }}</span>
+        </div>
+      </div>
+    </section>
+
+    <br />
+    <section class="card feature-card">
+      <h3 class="headline headline-3">{{ card.title }} social media links.</h3>
+
+      <div class="">
+        <ul class="card-wrapper">
+          {% if card.facebook_url %}
+            <li class="list-inline-item post-title" title="{{ card.title }} facebook page">
+              <a href="{{ card.facebook_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-facebook" slot="start"></ion-icon></a>
+            </li>
+          {% endif %}
+          {% if card.twitter_url %}
+            <li class="list-inline-item" title="{{ card.title }} twitter page">
+              <a href="{{ card.twitter_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-twitter"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.linkedin_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.linkedin_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-linkedin"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.instagram_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.instagram_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-instagram"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.youtube_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.youtube_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-youtube"></ion-icon></a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </section>
+  {% elif layout == 'Layout Last 5' %}
+    <!-- card Details Section -->
+    <section class="card feature-card">
+      <h2 class="headline headline-3">Understanding {{ card.title }}</h2>
+      <div class="">
+        <div class="card-wrapper" title="{{ card.title }} (IATA Code: {{ card.iata_code }})">
+          <strong>{{ card.title }} (IATA Code: </strong><span itemprop="iataCode">{{ card.iata_code }}</span>)
+        </div>
+        <div class="card-wrapper" title="{{ card.title }} ICAO Code">
+          <strong>The ICAO designation for {{ card.title }} is</strong><span>{{ card.icao_code }}</span>
+        </div>
+        {% if card.headquarters %}
+          <div class="card-wrapper" title="{{ card.title }}s Headquarters Site">
+            <strong>{{ card.title }}s Headquarters Site:</strong> <span itemprop="address">{{ card.headquarters }}</span>
+          </div>
+        {% else %}
+
+        {% endif %}
+
+        <div class="card-wrapper">
+          <strong>Operational Status of {{ card.title }}:</strong> <span>{{ card.get_operational_display }}</span>
+        </div>
+        <div class="card-wrapper">
+          <strong>{{ card.title }}'s Surrounding Region:</strong> <span>{{ card.area_served }}</span>
+        </div>
+      </div>
+    </section>
+
+    <br />
+    <!-- card Contact Details Section -->
+    <section class="card feature-card" itemscope itemtype="https://schema.org/ContactPoint">
+      <h2 class="headline headline-3">{{ card.title }}’s contact info.</h2>
+      <div class="">
+        <div class="card-wrapper">
+          <strong>{{ card.title }} Location:</strong> <span itemprop="address">{{ card.location }}</span>
+        </div>
+        <div class="card-wrapper">
+          <strong>{{ card.title }} Online Resource:</strong> <span><a href="{{ card.website }}" target="_blank" itemprop="url">{{ card.website }}</a></span>
+        </div>
+        <div class="card-wrapper">
+          <strong>{{ card.title }} Contact Info:</strong> <span itemprop="contactType">{{ card.contact_info }}</span>
+        </div>
+      </div>
+    </section>
+
+    <br />
+    <section class="card feature-card">
+      <h3 class="headline headline-3">Find {{ card.title }} on social media.</h3>
+
+      <div class="">
+        <ul class="card-wrapper">
+          {% if card.facebook_url %}
+            <li class="list-inline-item post-title" title="{{ card.title }} facebook page">
+              <a href="{{ card.facebook_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-facebook" slot="start"></ion-icon></a>
+            </li>
+          {% endif %}
+          {% if card.twitter_url %}
+            <li class="list-inline-item" title="{{ card.title }} twitter page">
+              <a href="{{ card.twitter_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-twitter"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.linkedin_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.linkedin_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-linkedin"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.instagram_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.instagram_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-instagram"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.youtube_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.youtube_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-youtube"></ion-icon></a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </section>
+  {% elif layout == 'Layout Leave 1' %}
+    <!-- card Details Section -->
+    <section class="card feature-card">
+      <h2 class="headline headline-3">Discover {{ card.title }}</h2>
+      <div class="">
+        <div class="card-wrapper" title="Airport Code for {{ card.title }}: {{ card.iata_code }}">
+          <strong>Airport Code for {{ card.title }}: </strong><span itemprop="iataCode">{{ card.iata_code }}</span>
+        </div>
+        <div class="card-wrapper" title="{{ card.title }} ICAO Code">
+          <strong>{{ card.title }}’s ICAO Code:</strong><span>{{ card.icao_code }}</span>
+        </div>
+        {% if card.headquarters %}
+          <div class="card-wrapper" title="{{ card.title }}s Central Headquarters">
+            <strong>{{ card.title }}s Central Headquarters:</strong> <span itemprop="address">{{ card.headquarters }}</span>
+          </div>
+        {% else %}
+
+        {% endif %}
+
+        <div class="card-wrapper">
+          <strong>Operational Status of {{ card.title }}:</strong> <span>{{ card.get_operational_display }}</span>
+        </div>
+        <div class="card-wrapper">
+          <strong>{{ card.title }}'s Area of Influence:</strong> <span>{{ card.area_served }}</span>
+        </div>
+      </div>
+    </section>
+
+    <br />
+    <!-- card Contact Details Section -->
+    <section class="card feature-card" itemscope itemtype="https://schema.org/ContactPoint">
+      <h2 class="headline headline-3">How to reach {{ card.title }}.</h2>
+      <div class="">
+        <div class="card-wrapper">
+          <strong>{{ card.title }} Location:</strong> <span itemprop="address">{{ card.location }}</span>
+        </div>
+        <div class="card-wrapper">
+          <strong>{{ card.title }}’s Digital Website:</strong> <span><a href="{{ card.website }}" target="_blank" itemprop="url">{{ card.website }}</a></span>
+        </div>
+        <div class="card-wrapper">
+          <strong>{{ card.title }} Contact Info:</strong> <span itemprop="contactType">{{ card.contact_info }}</span>
+        </div>
+      </div>
+    </section>
+
+    <br />
+    <section class="card feature-card">
+      <h3 class="headline headline-3">Social media accounts for {{ card.title }}.</h3>
+
+      <div class="">
+        <ul class="card-wrapper">
+          {% if card.facebook_url %}
+            <li class="list-inline-item post-title" title="{{ card.title }} facebook page">
+              <a href="{{ card.facebook_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-facebook" slot="start"></ion-icon></a>
+            </li>
+          {% endif %}
+          {% if card.twitter_url %}
+            <li class="list-inline-item" title="{{ card.title }} twitter page">
+              <a href="{{ card.twitter_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-twitter"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.linkedin_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.linkedin_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-linkedin"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.instagram_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.instagram_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-instagram"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.youtube_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.youtube_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-youtube"></ion-icon></a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </section>
+  {% elif layout == 'Layout Leave 2' %}
+    <!-- card Details Section -->
+    <section class="card feature-card">
+      <h2 class="headline headline-3">A look into {{ card.title }}</h2>
+      <div class="">
+        <div class="card-wrapper" title="{{ card.title }}’s designated IATA Code: {{ card.iata_code }}">
+          <strong>{{ card.title }}’s designated IATA Code:</strong> <span itemprop="iataCode">{{ card.iata_code }}</span>
+        </div>
+        <div class="card-wrapper" title="{{ card.title }} ICAO Code">
+          <strong>{{ card.title }}</strong> <span>(ICAO:{{ card.icao_code }}).</span>
+        </div>
+        {% if card.headquarters %}
+          <div class="card-wrapper" title="{{ card.title }}s HQ">
+            <strong>{{ card.title }}s HQ:</strong> <span itemprop="address">{{ card.headquarters }}</span>
+          </div>
+        {% else %}
+
+        {% endif %}
+
+        <div class="card-wrapper">
+          <strong>Operational Status of {{ card.title }}:</strong> <span>{{ card.get_operational_display }}</span>
+        </div>
+        <div class="card-wrapper">
+          <strong>{{ card.title }}'s Served Territory:</strong> <span>{{ card.area_served }}</span>
+        </div>
+      </div>
+    </section>
+
+    <br />
+    <!-- card Contact Details Section -->
+    <section class="card feature-card" itemscope itemtype="https://schema.org/ContactPoint">
+      <h2 class="headline headline-3">How to reach {{ card.title }}.</h2>
+      <div class="">
+        <div class="card-wrapper">
+          <strong>{{ card.title }} Location:</strong> <span itemprop="address">{{ card.location }}</span>
+        </div>
+        <div class="card-wrapper">
+          <strong>{{ card.title }}s Website Address:</strong> <span><a href="{{ card.website }}" target="_blank" itemprop="url">{{ card.website }}</a></span>
+        </div>
+        <div class="card-wrapper">
+          <strong>{{ card.title }} Contact Info:</strong> <span itemprop="contactType">{{ card.contact_info }}</span>
+        </div>
+      </div>
+    </section>
+
+    <br />
+    <section class="card feature-card">
+      <h3 class="headline headline-3">{{ card.title }} on social networks.</h3>
+
+      <div class="">
+        <ul class="card-wrapper">
+          {% if card.facebook_url %}
+            <li class="list-inline-item post-title" title="{{ card.title }} facebook page">
+              <a href="{{ card.facebook_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-facebook" slot="start"></ion-icon></a>
+            </li>
+          {% endif %}
+          {% if card.twitter_url %}
+            <li class="list-inline-item" title="{{ card.title }} twitter page">
+              <a href="{{ card.twitter_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-twitter"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.linkedin_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.linkedin_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-linkedin"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.instagram_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.instagram_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-instagram"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.youtube_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.youtube_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-youtube"></ion-icon></a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </section>
+  {% elif layout == 'Layout Leave 3' %}
+    <!-- card Details Section -->
+    <section class="card feature-card">
+      <h2 class="headline headline-3">{{ card.title }} explained</h2>
+      <div class="">
+        <div class="card-wrapper" title="{{ card.iata_code }}, the IATA Code for {{ card.title }}">
+          <strong itemprop="iataCode">{{ card.iata_code }}, the IATA Code for <span>{{ card.title }}</span></strong>
+        </div>
+        <div class="card-wrapper" title="{{ card.title }} ICAO Code">
+          <strong>{{ card.title }}’s ICAO Identifier:</strong> <span>{{ card.icao_code }}</span>
+        </div>
+        {% if card.headquarters %}
+          <div class="card-wrapper" title="{{ card.title }}s Central Office">
+            <strong>{{ card.title }}s Central Office:</strong> <span itemprop="address">{{ card.headquarters }}</span>
+          </div>
+        {% else %}
+
+        {% endif %}
+
+        <div class="card-wrapper">
+          <strong>Operational Status of {{ card.title }}:</strong> <span>{{ card.get_operational_display }}</span>
+        </div>
+        <div class="card-wrapper">
+          <strong>Area Served by This {{ card.title }}:</strong> <span>{{ card.area_served }}</span>
+        </div>
+      </div>
+    </section>
+
+    <br />
+    <!-- card Contact Details Section -->
+    <section class="card feature-card" itemscope itemtype="https://schema.org/ContactPoint">
+      <h2 class="headline headline-3">Speak with {{ card.title }}.</h2>
+      <div class="">
+        <div class="card-wrapper">
+          <strong>{{ card.title }} Location:</strong> <span itemprop="address">{{ card.location }}</span>
+        </div>
+        <div class="card-wrapper">
+          <strong>{{ card.title }}s Web Address:</strong> <span><a href="{{ card.website }}" target="_blank" itemprop="url">{{ card.website }}</a></span>
+        </div>
+        <div class="card-wrapper">
+          <strong>{{ card.title }} Contact Info:</strong> <span itemprop="contactType">{{ card.contact_info }}</span>
+        </div>
+      </div>
+    </section>
+
+    <br />
+    <section class="card feature-card">
+      <h3 class="headline headline-3">{{ card.title }}’s social media profiles.</h3>
+
+      <div class="">
+        <ul class="card-wrapper">
+          {% if card.facebook_url %}
+            <li class="list-inline-item post-title" title="{{ card.title }} facebook page">
+              <a href="{{ card.facebook_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-facebook" slot="start"></ion-icon></a>
+            </li>
+          {% endif %}
+          {% if card.twitter_url %}
+            <li class="list-inline-item" title="{{ card.title }} twitter page">
+              <a href="{{ card.twitter_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-twitter"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.linkedin_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.linkedin_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-linkedin"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.instagram_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.instagram_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-instagram"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.youtube_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.youtube_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-youtube"></ion-icon></a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </section>
+  {% elif layout == 'Layout Leave 4' %}
+    <!-- card Details Section -->
+    <section class="card feature-card">
+      <h2 class="headline headline-3">Exploring {{ card.title }}</h2>
+      <div class="">
+        <div class="card-wrapper" title="The IATA identifier for {{ card.title }} is {{ card.iata_code }}">
+          <strong>The IATA identifier for {{ card.title }} is <span itemprop="iataCode">{{ card.iata_code }}</span></strong>
+        </div>
+        <div class="card-wrapper" title="{{ card.title }} ICAO Code">
+          <strong>{{ card.title }}, known by ICAO Code:</strong><span>{{ card.icao_code }}</span>
+        </div>
+        {% if card.headquarters %}
+          <div class="card-wrapper" title="{{ card.title }}s Authority Headquarters">
+            <strong>{{ card.title }}s Authority Headquarters:</strong> <span itemprop="address">{{ card.headquarters }}</span>
+          </div>
+        {% else %}
+
+        {% endif %}
+
+        <div class="card-wrapper">
+          <strong>Operational Status of {{ card.title }}:</strong> <span>{{ card.get_operational_display }}</span>
+        </div>
+        <div class="card-wrapper">
+          <strong>Area Served by {{ card.title }}:</strong> <span>{{ card.area_served }}</span>
+        </div>
+      </div>
+    </section>
+
+    <br />
+    <!-- card Contact Details Section -->
+    <section class="card feature-card" itemscope itemtype="https://schema.org/ContactPoint">
+      <h2 class="headline headline-3">Contact support at {{ card.title }}.</h2>
+      <div class="">
+        <div class="card-wrapper">
+          <strong>{{ card.title }} Location:</strong> <span itemprop="address">{{ card.location }}</span>
+        </div>
+        <div class="card-wrapper">
+          <strong>{{ card.title }} Website:</strong> <span><a href="{{ card.website }}" target="_blank" itemprop="url">{{ card.website }}</a></span>
+        </div>
+        <div class="card-wrapper">
+          <strong>{{ card.title }} Contact Info:</strong> <span itemprop="contactType">{{ card.contact_info }}</span>
+        </div>
+      </div>
+    </section>
+
+    <br />
+    <section class="card feature-card">
+      <h3 class="headline headline-3">Get social with {{ card.title }}.</h3>
+
+      <div class="">
+        <ul class="card-wrapper">
+          {% if card.facebook_url %}
+            <li class="list-inline-item post-title" title="{{ card.title }} facebook page">
+              <a href="{{ card.facebook_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-facebook" slot="start"></ion-icon></a>
+            </li>
+          {% endif %}
+          {% if card.twitter_url %}
+            <li class="list-inline-item" title="{{ card.title }} twitter page">
+              <a href="{{ card.twitter_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-twitter"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.linkedin_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.linkedin_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-linkedin"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.instagram_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.instagram_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-instagram"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.youtube_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.youtube_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-youtube"></ion-icon></a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </section>
+  {% else %}
+    <!-- card Details Section -->
+    <section class="card feature-card">
+      <h2 class="headline headline-3">{{ card.title }}: The basics</h2>
+      <div class="">
+        <div class="card-wrapper" title="{{ card.title }}, with IATA Code {{ card.iata_code }}">
+          <strong>{{ card.title }}, with IATA Code</strong> <span itemprop="iataCode">{{ card.iata_code }}</span>
+        </div>
+        <div class="card-wrapper" title="{{ card.title }} ICAO Code">
+          <span>{{ card.icao_code }}</span> is the ICAO Code for {{ card.title }}.
+        </div>
+        {% if card.headquarters %}
+          <div class="card-wrapper" title="{{ card.title }} Headquarters">
+            <strong>{{ card.title }} Headquarters:</strong> <span itemprop="address">{{ card.headquarters }}</span>
+          </div>
+        {% else %}
+
+        {% endif %}
+
+        <div class="card-wrapper">
+          <strong>Operational Status of {{ card.title }}:</strong> <span>{{ card.get_operational_display }}</span>
+        </div>
+        <div class="">
+          <strong>{{ card.title }} Service Area:</strong> <span>{{ card.area_served }}</span>
+        </div>
+      </div>
+    </section>
+
+    <br />
+    <!-- card Contact Details Section -->
+    <section class="card feature-card" itemscope itemtype="https://schema.org/ContactPoint">
+      <h2 class="headline headline-3">Find {{ card.title }} contact info.</h2>
+      <div class="">
+        <div class="card-wrapper">
+          <strong>{{ card.title }} Location:</strong>
+          <span itemprop="address">{{ card.location }}</span>
+        </div>
+        <div class="card-wrapper">
+          <strong>Website of the {{ card.title }}s:</strong> <span><a href="{{ card.website }}" target="_blank" itemprop="url">{{ card.website }}</a></span>
+        </div>
+        <div class="card-wrapper">
+          <strong>{{ card.title }} Contact Info:</strong> <span itemprop="contactType">{{ card.contact_info }}</span>
+        </div>
+      </div>
+    </section>
+
+    <br />
+    <section class="card feature-card">
+      <h3 class="headline headline-3">Social profiles of {{ card.title }}.</h3>
+
+      <div class="">
+        <ul class="card-wrapper">
+          {% if card.facebook_url %}
+            <li class="list-inline-item post-title" title="{{ card.title }} facebook page">
+              <a href="{{ card.facebook_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-facebook" slot="start"></ion-icon></a>
+            </li>
+          {% endif %}
+          {% if card.twitter_url %}
+            <li class="list-inline-item" title="{{ card.title }} twitter page">
+              <a href="{{ card.twitter_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-twitter"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.linkedin_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.linkedin_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-linkedin"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.instagram_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.instagram_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-instagram"></ion-icon></a>
+            </li>
+          {% endif %}
+
+          {% if card.youtube_url %}
+            <li class="list-inline-item">
+              <a href="{{ card.youtube_url }}" itemprop="sameas" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-youtube"></ion-icon></a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </section>
+  {% endif %}
+</div>

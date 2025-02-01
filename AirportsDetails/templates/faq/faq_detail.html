@@ -1,0 +1,57 @@
+{% extends 'base_layout.html' %}
+
+
+{% block title %}
+  <title>{{ faq.meta_title }}</title>
+  <!-- Schema Markup for the faq -->
+  <meta name="description" content="{{ faq.meta_description }}" />
+  <meta name="keyword" content="{{ faq.meta_keywords }}" />
+
+  <meta property="og:title" content="{{ faq.meta_title }}" />
+  <meta property="og:description" content="{{ faq.meta_description|truncatewords:60|safe }}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="{{ faq.get_absolute_url }}" />
+
+  <meta name="robots" content="index, follow" />
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": {
+        "@type": "Question",
+        "name": "{{ faq.question }}",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "{{ faq.answer }}"
+        }
+      }
+    }
+    </script>
+
+  
+{% endblock %}
+
+
+{% block content %}  
+  <div class="col-12 col-md-8 mb-5 mb-lg-0">
+    <article itemscope itemtype="https://schema.org/BlogPosting"  itemid="{{ request.build_absolute_uri }}">
+
+
+      <h1 class="h4 section-title">{{ faq.question }}</h1>
+      <p>{{ faq.answer }}</p>
+      <hr />
+
+      {% include "components/comments.html" with post_id=terminal.id %}
+
+    </article>
+
+   
+
+    <!-- Pagination controls if paginate_by is used -->
+    {% include 'components/pagination.html' %}
+
+
+
+  </div>
+{% endblock %}

@@ -1,0 +1,17 @@
+<!-- -Country Details -->
+
+{% if places %}
+  <section>
+    <div class="">
+      <h2 class="headline headline-3"><a href="{% url 'places_to_visit_by_country_list' card.country.slug %}">All Places to Visit in {{ card.country.title }}</a></h2>
+      <div class="row">
+        {% for card in places %}
+          {% include 'components/left_card.html' with card=card %}
+        {% empty %}
+          <li>No Places to Visit associated with {{ country.title }}.</li>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+{% endif %}

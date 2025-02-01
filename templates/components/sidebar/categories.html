@@ -1,0 +1,11 @@
+<div class="card aside-card">
+  <h3 class="headline headline-2 aside-title"><a href="{% url 'category-list' %}"><span class="span">Categories</span></a></h3>
+  <div class="feature-list">
+    {% for card in sidebar_categories %}
+      <span>
+        <a href="{% url 'post_by_category' card.slug %}" class="btn btn-primary">{{ card.title }}</a>
+
+      </span>
+    {% endfor %}
+  </div>
+</div>

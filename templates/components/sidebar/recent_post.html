@@ -1,0 +1,25 @@
+<div class="card aside-card">
+  <h3 class="headline headline-2 aside-title"><span class="span">Recent Post</span></h3>
+
+  <ul class="popular-list">
+    {% for card in sidebar_posts %}
+      <li>
+        <a href="{{ card.get_absolute_url }}">
+          <div class="popular-card">
+            <figure class="card-banner img-holder" style="--width: 64; --height: 64;">
+              <img src="{{ card.photo.url }}" width="64" height="64" loading="lazy" alt="{{ card.title }}" class="img-cover" />
+            </figure>
+
+            <div class="card-content">
+              <h4 class="headline headline-4 card-title"><a href="{{ card.get_absolute_url }}" class="link hover-2">{{ card.title }}.</a></h4>
+
+              <div class="warpper">
+                <time class="publish-date">{{ card.publish_date }}</time>
+              </div>
+            </div>
+          </div>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
